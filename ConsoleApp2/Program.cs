@@ -73,3 +73,8 @@ szöveg konvertálása DateTime típusra:
 string szovegesdatum = "2016.12.24.";
 DateTime datum = DateTime.Parse(szovegesdatum);
 */
+
+DateTime d1 = new DateTime(2024, 5, 6, 8, 0, 0);
+DateTime d2 = DateTime.Now;
+TimeSpan d3 = d1 - d2;
+Console.WriteLine($"Az érettségiig hátravan még {d3.Days.ToString()} nap, {d3.Hours.ToString()} óra, {d3.Minutes.ToString()} perc, {d3.Seconds.ToString()} másodperc.");
