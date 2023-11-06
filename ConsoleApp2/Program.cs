@@ -85,3 +85,9 @@ DateTime s1 = new DateTime(2005, 4, 8);
 DateTime s2 = DateTime.Now;
 TimeSpan s3 = s2 - s1;
 Console.WriteLine($"Én {s3.Days/365} éves, {s3.Days/365*12} hónapos és {s3.Days} napos vagyok.");
+
+//Milyen napra esik a dátum?
+Console.Write("Kérek egy dátumot: ");
+string date = Console.ReadLine();
+DateTime datum = DateTime.Parse(date);
+Console.WriteLine($"A megadott dátum ({date}) {datum.ToString("dddd")} napra esik.");
