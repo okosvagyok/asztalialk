@@ -74,7 +74,14 @@ string szovegesdatum = "2016.12.24.";
 DateTime datum = DateTime.Parse(szovegesdatum);
 */
 
+//Hány nap van az érettségiig?
 DateTime d1 = new DateTime(2024, 5, 6, 8, 0, 0);
 DateTime d2 = DateTime.Now;
 TimeSpan d3 = d1 - d2;
-Console.WriteLine($"Az érettségiig hátravan még {d3.Days.ToString()} nap, {d3.Hours.ToString()} óra, {d3.Minutes.ToString()} perc, {d3.Seconds.ToString()} másodperc.");
+Console.WriteLine($"Az érettségiig hátravan még {d3.Days} nap, {d3.Hours} óra, {d3.Minutes} perc és {d3.Seconds} másodperc.");
+
+//Milyen idős vagyok
+DateTime s1 = new DateTime(2005, 4, 8);
+DateTime s2 = DateTime.Now;
+TimeSpan s3 = s2 - s1;
+Console.WriteLine($"Én {s3.Days/365} éves, {s3.Days/365*12} hónapos és {s3.Days} napos vagyok.");
