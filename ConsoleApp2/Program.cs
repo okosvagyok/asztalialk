@@ -91,3 +91,19 @@ Console.Write("Kérek egy dátumot: ");
 string date = Console.ReadLine();
 DateTime datum = DateTime.Parse(date);
 Console.WriteLine($"A megadott dátum ({date}) {datum.ToString("dddd")} napra esik.");
+
+/*
+Típuskonverziók
+Implicit (automatikus):
+	pl. double d=12; //12.0
+	pl. int i=13.5 //adatvesztés lenne, nem működik
+Explicit (mi adjuk meg, hogy milyen típusra konvertálja)
+	tipus.Parse(string típusú változó) //csak stringből (beolvasáskor ajánlott)
+	pl. string beker = Console.ReadLine();
+		int szam1 = int.Parse(beker);
+	Convert.To+típus(bármilyen típus)
+	pl. int szam2 = Convert.ToInt32(beker);
+	típuskényszerítés (castolás)
+	pl. double hanyados = (double)szam1/szam2;
+
+*/
