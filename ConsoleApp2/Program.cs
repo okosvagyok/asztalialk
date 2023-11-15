@@ -106,4 +106,24 @@ Explicit (mi adjuk meg, hogy milyen típusra konvertálja)
 	típuskényszerítés (castolás)
 	pl. double hanyados = (double)szam1/szam2;
 
+is és as operátorok:
+    is-t típusok futásidejű lekérdezésére használjuk
+        pl. if(obj is Jedi) .../if (obj is Uralkodo) ...
+    as az ellenőrzés mellett egy explicit típuskonverziót is végrehajt
+    pl. class Negyzet
+    {
+        public int Aoldal;
+    }
+    class Teglalap : Negyzet
+    {
+        public int Boldal;
+    }
+    public void Akarmi (Negyzet n)
+    {
+        if (n is Teglalap)
+        {
+            (n as Teglalap).Boldal = 20;
+        }
+    }
+
 */
