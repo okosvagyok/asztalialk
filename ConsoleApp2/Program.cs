@@ -135,3 +135,15 @@ pl. char c = "a";
     Console.WriteLine(c2) //d
 
 */
+
+//Osztálypénz feladat
+public class Tanulo
+{
+    static Random rnd = new Random();
+    int tanulokSzama = rnd.Next(25, 36);
+    int penz = 0;
+    public Tanulo(int penz)
+    {
+        this.penz = penz;
+    }
+}
