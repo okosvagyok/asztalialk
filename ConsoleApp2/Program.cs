@@ -125,5 +125,13 @@ is és as operátorok:
             (n as Teglalap).Boldal = 20;
         }
     }
+Karakterkonverziók:
+A char típust implicit módon tudjuk numerikus típusra konvertálni, ekkor a karakter Unicode értékét kapjuk vissza.
+pl. char c = "a";
+    int x = c;
+    Console.WriteLine(x); //97
+    int y = 100;
+    char c2 = (char)y;
+    Console.WriteLine(c2) //d
 
 */
