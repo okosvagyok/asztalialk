@@ -72,7 +72,7 @@ label1.Text = d1.ToString("T");
 szöveg konvertálása DateTime típusra:
 string szovegesdatum = "2016.12.24.";
 DateTime datum = DateTime.Parse(szovegesdatum);
-*/
+
 
 //Hány nap van az érettségiig?
 DateTime d1 = new DateTime(2024, 5, 6, 8, 0, 0);
@@ -91,6 +91,7 @@ Console.Write("Kérek egy dátumot: ");
 string date = Console.ReadLine();
 DateTime datum = DateTime.Parse(date);
 Console.WriteLine($"A megadott dátum ({date}) {datum.ToString("dddd")} napra esik.");
+*/
 
 /*
 Típuskonverziók
@@ -145,13 +146,48 @@ for(int i = 0; i<letszam; i++)
     tanulok.Add(new Tanulo(i+1));
 }
 
+for(int i = 0; i < letszam; i++)
+{
+    for(int j = 0; j < 10; j++)
+    {
+        DateTime jelenlegiDatum = new DateTime(2023,09,01).AddMonths(j);
+        DateTime datum2 = jelenlegiDatum.AddMonths(1);
+        int napok = DateTime.DaysInMonth(datum2.Year, datum2.Month);
+        DateTime datum3 = datum2.AddDays(r.Next(1, napok+1));
+        datum2 = datum2.AddDays(r.Next(1, napok + 1));
+        tanulok[i].tranzakciok.Add(new Befizetes(datum2, "osztalypenz", r.Next(1, 10) < 3? 1000*r.Next(1,10):1000));
+        tanulok[i].tranzakciok.Add(new Befizetes(datum3, "kozoskoltseg", r.Next(2000, 5001) / letszam*(-1)));
+        tanulok[i].egyenleg += r.Next(2000, 5001) / letszam * (-1)+ r.Next(1, 10) < 3 ? 1000 * r.Next(1, 10) : 1000;
+    }
+    int alkalom = r.Next(1, 4);
+    DateTime kezdo = new DateTime(2023, 09, 01);
+    for (int k = 0; k < alkalom; k++)
+    {
+        kezdo = kezdo.AddMonths(r.Next(1, 11)).AddDays(r.Next(1, 28));
+        tanulok[i].tranzakciok.Add(new Befizetes(kezdo, "egyedikoltseg", r.Next(1000, 1501) / letszam * (-1)));
+        tanulok[i].egyenleg += r.Next(1000, 1501) / letszam * (-1);
+    }
+}
+
+for(int i = 0; i < letszam; i++)
+{
+    Console.WriteLine($"Tanuló sorszáma: {tanulok[i].sorszam}/{letszam}");
+    Console.WriteLine($"Nyitóegyenleg: {tanulok[i].kezdoegyenleg}");
+    List<Befizetes> sort = tanulok[i].tranzakciok.OrderBy(x => x.datum).ToList();
+    for(int j = 0; j < sort.Count; j++)
+    {
+        Console.WriteLine($"{sort[j].datum}, {sort[j].jelleg}, {sort[j].osszeg}");
+    }
+    Console.WriteLine($"Záróegyenleg: {tanulok[i].egyenleg}");
+}
+
 class Tanulo
 {
     public int sorszam;
     public int kezdoegyenleg;
     public int egyenleg;
-    Random rnd = new Random()
-    List<Befizetes> tranzakciok;
+    Random rnd = new Random();
+    public List<Befizetes> tranzakciok;
 
     public Tanulo(int sorszam)
     {
