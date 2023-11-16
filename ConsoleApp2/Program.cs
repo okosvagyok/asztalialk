@@ -137,13 +137,40 @@ pl. char c = "a";
 */
 
 //Osztálypénz feladat
-public class Tanulo
+Random r = new Random();
+List<Tanulo> tanulok = new List<Tanulo>();
+int letszam = r.Next(5, 16);
+for(int i = 0; i<letszam; i++)
 {
-    static Random rnd = new Random();
-    int tanulokSzama = rnd.Next(25, 36);
-    int penz = 0;
-    public Tanulo(int penz)
+    tanulok.Add(new Tanulo(i+1));
+}
+
+class Tanulo
+{
+    public int sorszam;
+    public int kezdoegyenleg;
+    public int egyenleg;
+    Random rnd = new Random()
+    List<Befizetes> tranzakciok;
+
+    public Tanulo(int sorszam)
     {
-        this.penz = penz;
+        this.sorszam = sorszam;
+        this.kezdoegyenleg = rnd.Next(1000, 3501);
+        this.tranzakciok = new List<Befizetes>();
+    }
+}
+
+class Befizetes
+{
+    public DateTime datum;
+    public string jelleg;
+    public int osszeg;
+
+    public Befizetes(DateTime datum, string jelleg, int osszeg)
+    {
+        this.datum = datum;
+        this.jelleg = jelleg;
+        this.osszeg = osszeg;
     }
 }
