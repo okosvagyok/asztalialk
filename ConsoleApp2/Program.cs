@@ -215,26 +215,23 @@ class Befizetes
 
 //Egyszámjáték
 StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\Egyszámjáték\Egyszámjáték\egyszamjatek.txt");
-List<string> embik = new List<string>();
-List<Embi> adatok = new List<Embi>();
-List<int> tippek = new List<int>();
+List<Embi> embik = new List<Embi>();
+List<int> pontok = new List<int>();
 int sorok = 0;
 
 while (!f.EndOfStream)
 {
-    string line = f.ReadLine();
-    embik.Add(line);
-    adatok.Add(new Embi(embik[sorok].ToString().Split(" ")[10], tippek.Add(int.Parse(embik[sorok].Split(" ")))));
+    string[] lines = f.ReadLine().Split(" ");
+    for (int i = 0; i < lines.Length-1; i++)
+    {
+        pontok.Add(int.Parse(lines[i]));
+        embik.Add(new Embi(lines[lines.Length-1], pontok));
+    };
     sorok++;
-}
-
-for (int i = 0; i < embik.Count; i++)
-{
-
-}
+};
 f.Close();
-Console.WriteLine();
 Console.WriteLine($"3. feladat: Játékosok száma: {sorok}");
+Console.WriteLine($"4. feladat: Fordulók száma: {10}");
 
 class Embi
 {
@@ -246,4 +243,4 @@ class Embi
         this.nev = nev;
         this.tippek = tippek;
     }
-};
+}
