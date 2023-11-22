@@ -216,45 +216,34 @@ class Befizetes
 //Egyszámjáték
 StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\Egyszámjáték\Egyszámjáték\egyszamjatek.txt");
 List<string> embik = new List<string>();
-List<string> adatok = new List<string>();
+List<Embi> adatok = new List<Embi>();
+List<int> tippek = new List<int>();
 int sorok = 0;
 
 while (!f.EndOfStream)
 {
     string line = f.ReadLine();
     embik.Add(line);
-    new Embi(embik[sorok].ToString().Split(" ")[10], int.Parse(embik[sorok].Split(" ")[0]), int.Parse(embik[sorok].Split(" ")[1]), int.Parse(embik[sorok].Split(" ")[2]), int.Parse(embik[sorok].Split(" ")[3]), int.Parse(embik[sorok].Split(" ")[4]), int.Parse(embik[sorok].Split(" ")[5]), int.Parse(embik[sorok].Split(" ")[6]), int.Parse(embik[sorok].Split(" ")[7]), int.Parse(embik[sorok].Split(" ")[8]), int.Parse(embik[sorok].Split(" ")[9]));
+    adatok.Add(new Embi(embik[sorok].ToString().Split(" ")[10], tippek.Add(int.Parse(embik[sorok].Split(" ")))));
     sorok++;
 }
+
+for (int i = 0; i < embik.Count; i++)
+{
+
+}
 f.Close();
+Console.WriteLine();
 Console.WriteLine($"3. feladat: Játékosok száma: {sorok}");
 
 class Embi
 {
     public string nev;
-    public int tipp1;
-    public int tipp2;
-    public int tipp3;
-    public int tipp4;
-    public int tipp5;
-    public int tipp6;
-    public int tipp7;
-    public int tipp8;
-    public int tipp9;
-    public int tipp10;
+    public List<int> tippek;
 
-    public Embi(string nev, int tipp1, int tipp2, int tipp3, int tipp4, int tipp5, int tipp6, int tipp7, int tipp8, int tipp9, int tipp10)
+    public Embi(string nev, List<int> tippek)
     {
         this.nev = nev;
-        this.tipp1 = tipp1;
-        this.tipp2 = tipp2;
-        this.tipp3 = tipp3;
-        this.tipp4 = tipp4;
-        this.tipp5 = tipp5;
-        this.tipp6 = tipp6;
-        this.tipp7 = tipp7;
-        this.tipp8 = tipp8;
-        this.tipp9 = tipp9;
-        this.tipp10 = tipp10;
+        this.tippek = tippek;
     }
 };
