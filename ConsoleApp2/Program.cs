@@ -214,55 +214,85 @@ class Befizetes
 */
 
 //Egyszámjáték
-StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\egyszamjatek.txt");
-List<Embi> embik = new List<Embi>();
-List<int> pontok = new List<int>();
-int sorok = 0;
+using System.Xml.Serialization;
 
+StreamReader f = new StreamReader("egyszamjatek.txt");
+List<jatekosok> jatek = new List<jatekosok>();
+List<int> Pontszam = new List<int>();
 while (!f.EndOfStream)
 {
-    string[] lines = f.ReadLine().Split(" ");
-    for (int i = 0; i < lines.Length-1; i++)
-    {
-        pontok.Add(int.Parse(lines[i]));
-        embik.Add(new Embi(lines[lines.Length-1], pontok));
-    };
-    sorok++;
-};
-f.Close();
-Console.WriteLine($"3. feladat: Játékosok száma: {sorok}");
-Console.WriteLine($"4. feladat: Fordulók száma: {pontok.Count}");
-
-int oops = 0;
-while (oops < embik.Count && embik[oops].tippek[0] != 1)
-{
-    oops++;
+    string[] line = f.ReadLine().Split(" ");
+    Pontszam = new List<int>();
+    for (int i = 0; i < line.Length - 1; i++)
+        Pontszam.Add(int.Parse(line[i]));
+    jatek.Add(new jatekosok(line[line.Length - 1], Pontszam));
 }
-Console.WriteLine(oops < embik.Count ? "5. feladat: Az első fordulóban volt egyes tipp." : "5. feladat: Az első fordulóban nem volt egyes tipp.");
-
+Console.WriteLine($"3. feladat: Ennyi játékos vett részt: {jatek.Count}");
+Console.WriteLine($"4. feladat: Ennyi fordulót játszottak: {Pontszam.Count}");
+Console.Write($"5. feladat: ");
+int oops = 0;
+while (oops < jatek.Count && jatek[oops].tippek[0] != 1) { oops++; }
+Console.WriteLine(oops < jatek.Count ? "Az első fordulóban volt egyes tipp" : "Az első fordulóban nem volt egyes tipp");
 int valtozo = 0;
-for (int i = 0; i < embik.Count; i++)
+for (int i = 0; i < jatek.Count; i++)
 {
-    for (int k = 0; k < embik[i].tippek.Count; k++)
+    for (int k = 0; k < jatek[i].tippek.Count; k++)
     {
-        if (embik[i].tippek[k] > valtozo)
+        if (jatek[i].tippek[k] > valtozo)
         {
-            valtozo = embik[i].tippek[k];
+            valtozo = jatek[i].tippek[k];
         }
     }
 }
 Console.WriteLine($"6. feladat: A legnagyobb tipp a fordulók során: {valtozo}");
-Console.Write($"7. feladat: Kérem a forduló sorszámát [1-{pontok.Count}]: ");
-int beker = int.Parse(Console.ReadLine());
-
-class Embi
+Console.WriteLine($"7. feladat: Kérem a forduló sorszámát! [1-{Pontszam.Count}]");
+int beker = int.Parse(Console.ReadLine()) - 1;
+if (beker < 0 || beker > Pontszam.Count)
+{
+    beker = 0;
+}
+Dictionary<int, int> dict = new Dictionary<int, int>();
+for (int i = 0; i < Pontszam.Count - 1; i++)
+{
+    int tipp = jatek[i].tippek[beker];
+    if (dict.ContainsKey(tipp))
+    {
+        dict[tipp]++;
+    }
+    else
+    {
+        dict[tipp] = 1;
+    }
+}
+var rendezett = dict.Where(x => x.Value == 1);
+if (rendezett.Count() == 0)
+{
+    Console.WriteLine("8. Feladat: Nem volt nyertes tipp");
+    Console.WriteLine("9. Feladat: Nem volt nyertes");
+}
+else
+{
+    StreamWriter r = new StreamWriter("nyertes.txt");
+    r.WriteLine($"A forduló sorszáma: {beker}");
+    int nyertes = rendezett.OrderBy(x => x.Key).First().Key;
+    r.WriteLine($"Nyertes tipp: {nyertes}");
+    Console.WriteLine($"8. feladat: A nyertes tipp a megadott fordulóban: {nyertes}");
+    int i = 0;
+    while (jatek[i].tippek[beker] != nyertes)
+    {
+        i++;
+    }
+    Console.WriteLine($"9. feladat: A megadott forduló nyertese: {jatek[i].nev}");
+    r.WriteLine($"Nyertes Játékos: {jatek[i].nev}");
+    r.Close();
+}
+class jatekosok
 {
     public string nev;
     public List<int> tippek;
-
-    public Embi(string nev, List<int> tippek)
+    public jatekosok(string nev, List<int> lista)
     {
         this.nev = nev;
-        this.tippek = tippek;
+        this.tippek = lista;
     }
 }
