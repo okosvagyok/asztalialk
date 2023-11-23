@@ -214,7 +214,7 @@ class Befizetes
 */
 
 //Egyszámjáték
-StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\Egyszámjáték\Egyszámjáték\egyszamjatek.txt");
+StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\egyszamjatek.txt");
 List<Embi> embik = new List<Embi>();
 List<int> pontok = new List<int>();
 int sorok = 0;
@@ -231,7 +231,29 @@ while (!f.EndOfStream)
 };
 f.Close();
 Console.WriteLine($"3. feladat: Játékosok száma: {sorok}");
-Console.WriteLine($"4. feladat: Fordulók száma: {10}");
+Console.WriteLine($"4. feladat: Fordulók száma: {pontok.Count}");
+
+int oops = 0;
+while (oops < embik.Count && embik[oops].tippek[0] != 1)
+{
+    oops++;
+}
+Console.WriteLine(oops < embik.Count ? "5. feladat: Az első fordulóban volt egyes tipp." : "5. feladat: Az első fordulóban nem volt egyes tipp.");
+
+int valtozo = 0;
+for (int i = 0; i < embik.Count; i++)
+{
+    for (int k = 0; k < embik[i].tippek.Count; k++)
+    {
+        if (embik[i].tippek[k] > valtozo)
+        {
+            valtozo = embik[i].tippek[k];
+        }
+    }
+}
+Console.WriteLine($"6. feladat: A legnagyobb tipp a fordulók során: {valtozo}");
+Console.Write($"7. feladat: Kérem a forduló sorszámát [1-{pontok.Count}]: ");
+int beker = int.Parse(Console.ReadLine());
 
 class Embi
 {
