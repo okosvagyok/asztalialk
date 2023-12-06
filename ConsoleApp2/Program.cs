@@ -213,9 +213,8 @@ class Befizetes
 }
 */
 
+/*
 //Egyszámjáték
-using System.Xml.Serialization;
-
 StreamReader f = new StreamReader("egyszamjatek.txt");
 List<jatekosok> jatek = new List<jatekosok>();
 List<int> Pontszam = new List<int>();
@@ -296,3 +295,37 @@ class jatekosok
         this.tippek = lista;
     }
 }
+*/
+
+//Advent of Code
+StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\aocday1.txt");
+int max = 0;
+int osszead = 0;
+while (!f.EndOfStream)
+{
+    string line = f.ReadLine();
+    string szamok = "";
+    int i = 0;
+    while(i < line.Length && szamok.Length == 0)
+    {
+        if (char.IsNumber(line[i]))
+        {
+            szamok += line[i];
+        }
+        i++;
+    }
+    int j = line.Length - 1;
+    while (j >= 0 && szamok.Length == 1)
+    {
+        if (char.IsNumber(line[j]))
+        {
+            szamok += line[j];
+        }
+        j--;
+    }
+    osszead = int.Parse(szamok);
+    max += osszead;
+    Console.WriteLine($"Sorok: {line}-{szamok}.");
+}
+Console.WriteLine($"Összeadva: {max}");
+f.Close();
