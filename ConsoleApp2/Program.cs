@@ -333,7 +333,7 @@ f.Close();
 */
 
 //Advent of Code 2023 (Day 2)
-StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\forras_2nap.txt");
+StreamReader f = new StreamReader("forras_2nap.txt");
 List<string> fileData = new List<string>();
 while (!f.EndOfStream)
 {
@@ -341,25 +341,64 @@ while (!f.EndOfStream)
 }
 f.Close();
 
-Dictionary<string, int> dic = new Dictionary<string, int>() { { "red", 12 }, { "green", 13 }, { "blue", 14 } };
-int[] max = {12, 13, 14};
-
+//sum id
 int ids = 0;
+//max szám mindhárom színre
+Dictionary<string, int> dic = new Dictionary<string, int>() {{ "red", 12 }, { "green", 13 }, { "blue", 14 }};
+// EZAZ
+bool EZAZ;
 for (int i = 0; i < fileData.Count; i++)
 {
-    List<string> current = fileData[i].Split(new char[] { ',', ';', ':' }).ToList();
-
+    //egész jelenlegi sor splittelve
+    List<string> current = fileData[i].Split(new char[] {',', ';', ':'}).ToList();
+    //eleinte true, jónak kezeljük a sort
+    EZAZ = true;
+    //fut a sor összes kis elemén
     for (int o = 1; o < current.Count; o++)
     {
-        if (dic[current[o].Trim().Split(" ")[0]] > int.Parse(current[o].Trim().Split(" ")[1]))
+        //dic[current[o].Split(' ')[0]]  ->  dictionaryben az adott színnek a max elfogadott értéke
+        //int.Parse(current[o].Split(' ')[1])  ->  az adott húzásban az adott színből mennyi van
+
+        string currentColor = current[o].Trim().Split(' ')[1];
+        int currentAmount = int.Parse(current[o].Trim().Split(' ')[0]);
+        if (currentAmount > dic[currentColor])
         {
-            continue;
+            //ilyenkor a húzás sor bukta
+            EZAZ = false;
         }
-        ids += int.Parse(current[0].Split(" ")[1]);
+    }
+    //ha TRUE maradt az értéke akkor nincs rossz étrék
+    if (EZAZ)
+    {
+        //GAME SORSZÁMA
+        ids += int.Parse(current[0].Split(' ')[1]);
     }
 }
-Console.WriteLine($"Végső eredmény: {ids}.");
+Console.WriteLine($"VÉGSŐ EREDMÉNY: {ids}");
 
-//Advent of Code 2023 (Day 2, Part 2)
+
+// MÁSODIK RÉSZ
+
 int sum = 0;
-Dictionary<string, int> maxdic = new Dictionary<string, int>() { { "red", 0 }, { "green", 0 }, { "blue", 0 } };
+Dictionary<string, int> max = new Dictionary<string, int>();
+List<int> powers = new List<int>();
+for (int i = 0; i < fileData.Count; i++)
+{
+    max = new Dictionary<string, int>{ { "red", 0 }, { "green", 0 }, { "blue", 0 } };
+    //egész jelenlegi sor splittelve
+    List<string> current = fileData[i].Split(new char[] { ',', ';', ':' }).ToList();
+    for (int o = 1; o < current.Count; o++)
+    {
+        string currentColor = current[o].Trim().Split(' ')[1];
+        int currentAmount = int.Parse(current[o].Trim().Split(' ')[0]);
+        //ha a jelenlegi szín túlmegy a recordált legnagybbon akkor arra állítja át
+        if (currentAmount > max[currentColor])
+        {
+            max[currentColor] = currentAmount;
+        }
+    }
+    //fela dat
+    powers.Add(max["red"] * max["green"] * max["blue"]);
+}
+
+Console.WriteLine($"VÉGSŐ EREDMÉNY: {powers.Sum()}");
