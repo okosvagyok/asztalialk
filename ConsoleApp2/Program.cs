@@ -359,3 +359,7 @@ for (int i = 0; i < fileData.Count; i++)
     }
 }
 Console.WriteLine($"Végső eredmény: {ids}.");
+
+//Advent of Code 2023 (Day 2, Part 2)
+int sum = 0;
+Dictionary<string, int> maxdic = new Dictionary<string, int>() { { "red", 0 }, { "green", 0 }, { "blue", 0 } };
