@@ -297,7 +297,8 @@ class jatekosok
 }
 */
 
-//Advent of Code
+/*
+//Advent of Code 2023 (Day 1)
 StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\aocday1.txt");
 int max = 0;
 int osszead = 0;
@@ -329,3 +330,32 @@ while (!f.EndOfStream)
 }
 Console.WriteLine($"Összeadva: {max}");
 f.Close();
+*/
+
+//Advent of Code 2023 (Day 2)
+StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\forras_2nap.txt");
+List<string> fileData = new List<string>();
+while (!f.EndOfStream)
+{
+    fileData.Add(f.ReadLine());
+}
+f.Close();
+
+Dictionary<string, int> dic = new Dictionary<string, int>() { { "red", 12 }, { "green", 13 }, { "blue", 14 } };
+int[] max = {12, 13, 14};
+
+int ids = 0;
+for (int i = 0; i < fileData.Count; i++)
+{
+    List<string> current = fileData[i].Split(new char[] { ',', ';', ':' }).ToList();
+
+    for (int o = 1; o < current.Count; o++)
+    {
+        if (dic[current[o].Trim().Split(" ")[0]] > int.Parse(current[o].Trim().Split(" ")[1]))
+        {
+            continue;
+        }
+        ids += int.Parse(current[0].Split(" ")[1]);
+    }
+}
+Console.WriteLine($"Végső eredmény: {ids}.");
