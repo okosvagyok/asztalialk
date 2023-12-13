@@ -332,6 +332,7 @@ Console.WriteLine($"Összeadva: {max}");
 f.Close();
 */
 
+/*
 //Advent of Code 2023 (Day 2)
 StreamReader f = new StreamReader("forras_2nap.txt");
 List<string> fileData = new List<string>();
@@ -402,3 +403,97 @@ for (int i = 0; i < fileData.Count; i++)
 }
 
 Console.WriteLine($"VÉGSŐ EREDMÉNY: {powers.Sum()}");
+*/
+
+//Vírusok
+Random r = new Random();
+int random1 = r.Next(4, 20);
+int[,] halo = new int[random1, random1];
+
+int osszvirus = 0;
+for (int i = 0; i < random1; i++)
+{
+    for (int j = 0; j < random1; j++)
+    {
+        if (r.Next(1, 11) < 3)
+        {
+            halo[i, j] = 1;
+            osszvirus++;
+        }
+        else
+        {
+            halo[i, j] = 0;
+        }
+    }
+}
+for (int i = 0; i < random1; i++)
+{
+    for (int j = 0; j < random1; j++)
+    {
+        Console.Write(halo[i, j] + "\t");
+
+
+    }
+    Console.WriteLine();
+}
+
+while (random1 * random1 * 0.8 > osszvirus)
+{
+    for (int i = 0; i < random1; i++)
+    {
+        for (int j = 0; j < random1; j++)
+        {
+            if(szomszed(i, j) >= 2)
+            {
+                halo[i, j] = 1;
+                osszvirus++;
+            }
+            else
+            {
+                halo[i, j] = 0;
+            }
+        }
+    }
+    Console.WriteLine();
+    for (int i = 0; i < random1; i++)
+    {
+        for (int j = 0; j < random1; j++)
+        {
+            Console.Write(halo[i, j] + "\t");
+
+
+        }
+        Console.WriteLine();
+    }
+}
+
+int szomszed(int sor, int oszlop)
+{
+    if (sor < 0 || sor >= random1 || oszlop < 0 || oszlop >= random1)
+    {
+        return 0;
+    }
+    int[] szomszed = new int[random1 * random1];
+ 
+    for (int i = sor - 1; i <= sor + 1; i++)
+    {
+        for (int j = oszlop - 1; j <= oszlop + 1; j++)
+        {
+            if (i >= 0 && i < random1 && j >= 0 && j < random1)
+            {
+                szomszed[i * random1 + j] = halo[i, j];
+            }
+        }
+    }
+ 
+    int db = 0;
+    for (int i = 0; i < szomszed.Length; i++)
+    {
+        if (szomszed[i] == 1)
+        {
+            db++;
+        }
+    }
+ 
+    return db;
+}
