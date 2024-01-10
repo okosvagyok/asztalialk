@@ -405,6 +405,7 @@ for (int i = 0; i < fileData.Count; i++)
 Console.WriteLine($"VÉGSŐ EREDMÉNY: {powers.Sum()}");
 */
 
+/*
 //Vírusok
 Random r = new Random();
 int random1 = r.Next(4, 20);
@@ -496,4 +497,115 @@ int szomszed(int sor, int oszlop)
     }
  
     return db;
+}
+*/
+
+
+//Meteorológiai jelentés
+StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\Meteo\Meteo\tavirathu13.txt");
+List<Met> adatok = new List<Met>();
+string sor = "";
+while (!f.EndOfStream)
+{
+    sor = f.ReadLine();
+    adatok.Add(new Met(sor.Split(" ")[0], sor.Split(" ")[1], sor.Split(" ")[2], int.Parse(sor.Split(" ")[3])));
+}
+
+Console.WriteLine("2. feladat");
+Console.Write($"Adja meg a település kódját! Település: ");
+string varosKod =  Console.ReadLine();
+int utolsoMeres = 0;
+for (int i = 0; i < adatok.Count; i++)
+{
+    if (adatok[i].telepules == varosKod && utolsoMeres < int.Parse(adatok[i].ido))
+    {
+        utolsoMeres = int.Parse(adatok[i].ido);
+    }
+}
+Console.WriteLine($"Az utolsó mérési adat a megadott településről {utolsoMeres.ToString().Insert(2, ":")}-kor érkezett.");
+
+Console.WriteLine("3. feladat");
+int minHo = 100;
+int maxHo = 0;
+string minTelepules = "";
+string maxTelepules = "";
+int minIdo = 0;
+int maxIdo = 0;
+for (int j = 0; j < adatok.Count; j++)
+{
+    if (adatok[j].ho < minHo)
+    {
+        minHo = adatok[j].ho;
+        minTelepules = adatok[j].telepules;
+        minIdo = int.Parse(adatok[j].ido);
+    }
+    if (adatok[j].ho > maxHo)
+    {
+        maxHo = adatok[j].ho;
+        maxTelepules = adatok[j].telepules;
+        maxIdo = int.Parse(adatok[j].ido);
+    }
+}
+Console.WriteLine($"A legalacsonyabb hőmérséklet: {minTelepules} {minIdo.ToString().Insert(2, ":")} {minHo} fok.");
+Console.WriteLine($"A legmagasabb hőmérséklet: {maxTelepules} {maxIdo.ToString().Insert(2, ":")} {maxHo} fok.");
+
+Console.WriteLine("4. feladat");
+int szelCsend = 0;
+for (int k = 0; k < adatok.Count; k++)
+{
+    if (adatok[k].szel == "00000")
+    {
+        Console.WriteLine($"{adatok[k].telepules} {adatok[k].ido.Insert(2, ":")}");
+        szelCsend++;
+    }
+}
+if (szelCsend == 0)
+{
+    Console.WriteLine("Nem volt szélcsend a mérések idején.");
+}
+
+//Innen gatya
+Console.WriteLine("5. feladat");
+/*
+List<Met> kozepHo = new List<Met>();
+for (int l = 0; l < adatok.Count; l++)
+{
+    if (adatok[l].ido.StartsWith("01") || adatok[l].ido.StartsWith("07") || adatok[l].ido.StartsWith("13") || adatok[l].ido.StartsWith("19"))
+    {
+        kozepHo.Add(new Met(adatok[l].telepules, adatok[l].ido, adatok[l].szel, adatok[l].ho));
+    }
+}
+string elozoTelepules = "BP";
+int atlagHo = 0;
+int muveletSzamlalo = 0;
+for (int m = 0; m < adatok.Count; m++)
+{
+    if (elozoTelepules == kozepHo[m].telepules)
+    {
+        atlagHo += kozepHo[m].ho;
+        muveletSzamlalo++;
+    }
+}
+int kozepHomerseklet = atlagHo/muveletSzamlalo;
+Console.WriteLine($"Középhőmérséklet: {kozepHomerseklet}");
+
+
+Console.WriteLine("6. feladat");
+//StreamWriter w = new StreamWriter(@"C:\Users\kemenes.marton\Downloads\Meteo\Meteo\");
+
+*/
+class Met
+{
+    public string telepules;
+    public string ido;
+    public string szel;
+    public int ho;
+
+    public Met(string telepules, string ido, string szel, int ho)
+    {
+        this.telepules = telepules;
+        this.ido = ido;
+        this.szel = szel;
+        this.ho = ho;
+    }
 }
