@@ -500,7 +500,7 @@ int szomszed(int sor, int oszlop)
 }
 */
 
-
+/*
 //Meteorológiai jelentés
 StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\Meteo\Meteo\tavirathu13.txt");
 List<Met> adatok = new List<Met>();
@@ -566,7 +566,7 @@ if (szelCsend == 0)
 
 //Innen gatya
 Console.WriteLine("5. feladat");
-/*
+
 List<Met> kozepHo = new List<Met>();
 for (int l = 0; l < adatok.Count; l++)
 {
@@ -593,7 +593,6 @@ Console.WriteLine($"Középhőmérséklet: {kozepHomerseklet}");
 Console.WriteLine("6. feladat");
 //StreamWriter w = new StreamWriter(@"C:\Users\kemenes.marton\Downloads\Meteo\Meteo\");
 
-*/
 class Met
 {
     public string telepules;
@@ -607,5 +606,68 @@ class Met
         this.ido = ido;
         this.szel = szel;
         this.ho = ho;
+    }
+}
+*/
+
+//Hiányzások
+StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\Hiányzások\Hiányzások\naplo.txt");
+List<string> naplo = new List<string>();
+List<Tanulo> tanulok = new List<Tanulo>();
+string sor = "";
+int bejegyzesekSzama = 0;
+string[] tordelt;
+while (!f.EndOfStream)
+{
+    sor = f.ReadLine();
+    naplo.Add(sor);
+    if (!sor.StartsWith("#"))
+    {
+        tordelt = sor.Split(" ");
+        tanulok.Add(new Tanulo(tordelt[0] + tordelt[1], tordelt[2]));
+        bejegyzesekSzama++;
+    }
+}
+Console.WriteLine("2. feladat");
+Console.WriteLine($"A naplóban {bejegyzesekSzama} bejegyzés van.");
+
+Console.WriteLine("3. feladat");
+int igazoltHiany = 0;
+int igazolatlanHiany = 0;
+for (int i = 0; i < tanulok.Count; i++)
+{
+    if (tanulok[i].hianyzas.Contains("X"))
+    {
+        igazoltHiany++;
+    }else if (tanulok[i].hianyzas.Contains("I"))
+    {
+        igazolatlanHiany++;
+    }
+}
+Console.WriteLine($"Az igazolt hiányzások száma {igazoltHiany}, az igazolatlanoké {igazolatlanHiany} óra.");
+
+Console.WriteLine("5. feladat");
+string hetnapja(int honap, int nap)
+{
+    string[] napnev = { "vasarnap", "hetfo", "kedd", "szerda", "csutortok", "pentek", "szombat" };
+    int[] napszam = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 335 };
+    int napsorszam = (napszam[honap - 1] + nap);
+    return napnev[napsorszam];
+}
+Console.Write("A hónap sorszáma=");
+int honap = int.Parse(Console.ReadLine());
+Console.Write("A nap sorszáma=");
+int nap = int.Parse(Console.ReadLine());
+Console.WriteLine($"Azon a napon {hetnapja(honap, nap)} volt.");
+
+class Tanulo
+{
+    public string nev;
+    public string hianyzas;
+
+    public Tanulo(string nev, string hianyzas)
+    {
+        this.nev = nev;
+        this.hianyzas = hianyzas;
     }
 }
