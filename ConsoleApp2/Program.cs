@@ -610,6 +610,7 @@ class Met
 }
 */
 
+/*
 //Hiányzások
 StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\Hiányzások\Hiányzások\naplo.txt");
 List<string> naplo = new List<string>();
@@ -669,5 +670,98 @@ class Tanulo
     {
         this.nev = nev;
         this.hianyzas = hianyzas;
+    }
+}
+*/
+
+//Hiányzások (sexyBence)
+StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\Hiányzások\Hiányzások\naplo.txt");
+List<Hianyzas> tanulok = new List<Hianyzas>();
+int honap = 0;
+int nap = 0;
+while (!f.EndOfStream)
+{
+    string sor = f.ReadLine();
+    string[] adatok = sor.Split(" ");
+    if (adatok[0] == "#")
+    {
+        honap = int.Parse(adatok[1]);
+        nap = int.Parse(adatok[2]);
+    }
+    else
+    {
+        string nev = adatok[0] + " " + adatok[1];
+        string ora = adatok[2];
+        tanulok.Add(new Hianyzas(nev, honap, nap, ora));
+    }
+}
+f.Close();
+Console.WriteLine("2. feladat");
+Console.WriteLine($"A naplóban {tanulok.Count} bejegyzés van.");
+
+int igazolt = 0;
+int igazolatlan = 0;
+for (int i = 0; i < tanulok.Count; i++)
+{
+    for (int j = 0; j < tanulok[i].ora.Length; j++)
+    {
+        if (tanulok[i].ora[j] == 'X')
+        {
+            igazolt++;
+        }else if (tanulok[i].ora[j] == 'I')
+        {
+            igazolatlan++;
+        }
+    }
+}
+Console.WriteLine("3. feladat");
+Console.WriteLine($"Az igazolt hiányzások száma {igazolt}, az igazolatlanoké {igazolatlan} óra.");
+
+string hetnapja(int honap, int nap)
+{
+    string[] napnev = { "vasárnap", "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat" };
+    int[] napszam = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 335};
+    int napsorszam = (napszam[honap - 1] + nap)%7;
+    return napnev[napsorszam];
+}
+Console.WriteLine("5. feladat");
+Console.Write("A hónap sorszáma=");
+int honapSorszam = int.Parse(Console.ReadLine());
+Console.Write("A nap sorszáma=");
+int napSorszam = int.Parse(Console.ReadLine());
+Console.WriteLine($"Azon a napon {hetnapja(honapSorszam, napSorszam)} volt.");
+
+Console.WriteLine("6. feladat");
+Console.Write("A nap neve=");
+string napNeve = Console.ReadLine();
+Console.Write("Az óra sorszáma=");
+int oraSorszam = int.Parse(Console.ReadLine());
+
+int hianyzasokSzama = 0;
+for (int k = 0; k < tanulok.Count; k++)
+{
+    if (hetnapja(tanulok[k].honap, tanulok[k].nap) == napNeve)
+    {
+        if (tanulok[k].ora[oraSorszam - 1] == 'X' || tanulok[k].ora[oraSorszam - 1] == 'I')
+        {
+            hianyzasokSzama++;
+        }
+    }
+}
+Console.WriteLine($"Ekkor összesen {hianyzasokSzama} óra hiányzás történt.");
+
+public class Hianyzas
+{
+    public string nev;
+    public int honap;
+    public int nap;
+    public string ora;
+
+    public Hianyzas(string nev, int honap, int nap, string ora)
+    {
+        this.nev = nev;
+        this.honap = honap;
+        this.nap = nap;
+        this.ora = ora;
     }
 }
