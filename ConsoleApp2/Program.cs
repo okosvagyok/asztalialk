@@ -800,4 +800,48 @@ TULAJDONSÁGOK
  
 x:Name nem tulajdonság, jellemző, ami egy azonosítót(futás idejű nevet) rendel az objektumpéldányhoz
 C# kódból is lehet beállítani pl.: Gomb.Content = "Valami felirat";
+
+VEZÉRLŐELEMEK
+Alapvetően a Control osztály leszármazottjai
+TextBlock szövegek megjelenítésére, nem vezérlő, nem a Control osztály leszármazottja, de ugyan úgy kell kezelni
+Label vezérlő is ezt csinálja, de képet is tudunk rajta jeleníteni, egy soros szöveget lehet vele megjeleníteni, illetve képeket, de szövegre TextBox, kevésbé erőforrásigényes
+
+TextBlock
+<Grid>
+    <TextBlock>
+        Ez egy TextBlock.
+    </TextBlock>
+</Grid>
+Ha hosszabb a szöveg, akkor nem tördeli automatikusan, hanem a szöveg kifolyik a képből
+pl.
+<TextBlock Margin="10">
+    Ez egy többsoros szöveg, <LineBreak />
+    amit sortöréssel jelenítünk meg.
+</TextBlock>
+
+<TextBlock Margin="10" TextTrimming="CharacterEllipsis vagy WordEllipsis">
+    Ez egy többsoros szöveg, amit valószínüleg nem
+    fogunk látni teljes mértékben, de jelzi.
+</TextBlock>
+
+<Grid>
+    <TextBlock Margin="10" TextWrapping="Wrap">
+        Ez egy hosszú szöveg, ami automatikusan darálódik a
+        rendelkezésre álló hely függvényében.
+    </TextBlock>
+</Grid>
+    - A <LineBreak/>-nél jobb megoldás
+
+Szövegformázás
+<Bold></Bold>;<Italic></Italic>;<Underline></Underline>;<Span></Span>
+Hyperlink:
+<TextBlock Margin="10" TextWrapping="Wrap">
+    Ebben a szövegben egy <Hyperlink RequestNavigate = "Hyperlink_RequestNavigate" NavigateUri = "https://www.google.com">link</Hyperlink> található.
+</TextBlock>
+    - Ahhoz, hogy a külső URL-eket érjünk el a WPF alkalmazásból, a háttérkódban kezelnünk kell a RequestNavigate eseményt.
+MainWindow.xaml.cs:
+private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+{
+    System.Diagnostics.Process.Start(e.Uri.AbsoluteUri)
+}
 */
