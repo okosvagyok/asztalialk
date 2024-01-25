@@ -674,6 +674,7 @@ class Tanulo
 }
 */
 
+/*
 //Hiányzások (sexyBence)
 StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\Hiányzások\Hiányzások\naplo.txt");
 List<Hianyzas> tanulok = new List<Hianyzas>();
@@ -765,3 +766,38 @@ public class Hianyzas
         this.ora = ora;
     }
 }
+*/
+
+/*
+Windows Presentation Foundation (WPF)
+asztali alkok grafikus felületének (UI) .NETtel történő alkalmazásprogramozási terület
+deklaratyv felhasználói felület (XAML jelölőnyelvvel)
+vektorgrafikus elemek (esztétikus átméretezés, kevesebb tárterület)
+animációk deklaratív definiálása
+grafikus gyorsítás (DirectX)
+adatkötés (automatikus szinkronbn felhasználói felület és üzleti logika)
+ 
+ 
+WINDOW osztály
+fő ablak- alapértelmezett keret, címsor, minimalizáló és maximalizáló és bezáró gomb
+a <Window> gyökérobjektum, melynk cask EGY gyermekeleme lehet, ezért hozta létre a VS számunkra a <Grid> objektumot benne, mert ez egy panel,bármennyi további panelt és vezérlőt tartalmazhat
+ 
+ALAPVETŐ ÁLLOMÁNYAI
+ 
+az app.xaml fileban az alk erőforrásait és indítási beállításait lehet definiálni. ez a file az Application gyökérelemmel kezdődik
+ 
+a StartupUri tulaj. az alkalmazás elindulásakor először megjelenő ablakra mutat
+adatokat adhatunk meg erőforrásként, (Resources), melyeket lokálisan az ablakhoz rebdelünk, vagy globálisan, az egész alkalmazásban használhatunk
+ 
+App.xaml.cs - háttérkód
+namespace elso_wpf
+{
+	public partial class App : APplication{
+}
+}
+ 
+TULAJDONSÁGOK
+ 
+x:Name nem tulajdonság, jellemző, ami egy azonosítót(futás idejű nevet) rendel az objektumpéldányhoz
+C# kódból is lehet beállítani pl.: Gomb.Content = "Valami felirat";
+*/
