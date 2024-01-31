@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="323">
     <Grid>
-        <TextBlock Margin="20" FontSize="35" TextWrapping="Wrap">Írok egy hosszú szöveget, <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://www.google.com">ami</Hyperlink> nem fog teljesen kiférni.</TextBlock>
-        <TextBlock Margin="20" FontSize="35" TextWrapping="Wrap">Ide is írok valami nagyon hosszú szöveget.</TextBlock>
+        <Label BorderThickness="10" BorderBrush="Blue">
+            <Image Source="https://cdn.nwmgroups.hu/s/img/i/1408/20140807foto-szelfie-makako-majom-fenykep.jpg"/>
+        </Label>
     </Grid>
 </Window>

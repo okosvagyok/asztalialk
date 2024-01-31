@@ -844,4 +844,14 @@ private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e
 {
     System.Diagnostics.Process.Start(e.Uri.AbsoluteUri)
 }
+
+
+Grid
+a legkomplexebb paneltípus, amit használhatunk - ez is egy vezérlő, amely konténerként működik a többi vezérlő számára, és ezek elrendezését is szabályozhatjuk vele
+oszlopokat, sorokat tartalmaz, melyeknek megadhatjuk szélességét/magasságát pixelben, egymáshoz viszonyított arányban (*), vagy auto módban - amikor a tartalomhoz illeszkedik a méret
+UniformGrid - minden sor és oszlop azonos méretű
+ha több vezérlőt teszünk az ablakba, egymás fölé helyezi őket (rétegek), ezért fel kell osztanunk a teret a ColumnDefinition és RowDefinition tagekkel
+<Grid>
+    <Grid.ColoumnDefinitions>
+</Grid>
 */
