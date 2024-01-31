@@ -5,10 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="323">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label BorderThickness="10" BorderBrush="Blue">
-            <Image Source="https://cdn.nwmgroups.hu/s/img/i/1408/20140807foto-szelfie-makako-majom-fenykep.jpg"/>
-        </Label>
     </Grid>
 </Window>
