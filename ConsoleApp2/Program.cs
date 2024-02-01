@@ -854,4 +854,18 @@ ha több vezérlőt teszünk az ablakba, egymás fölé helyezi őket (rétegek)
 <Grid>
     <Grid.ColoumnDefinitions>
 </Grid>
+
+GridSplitter
+ha engedni szeretnénk, hogy a felhasználó átméretezze, újraossza a teret a Grid sorai vagy oszlopai között
+hozzáadjuk egy új oszlopként (vagy sorként), adunk neki minimális méretet (Width/Height), a felhasználó el fogja tudni húzni a megfelelő irányba
+
+GridSplitter - függőleges
+<Grid>
+    <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Center" VerticalAlingment="Stretch" />
+</Grid>
+
+GridSplitter - vízszintes
+<Grid>
+    <GridSplitter Grid.Row="1" Height="5" HorizontalAlingment="Stretch" VerticalAlingment="Center">
+</Grid>
 */
