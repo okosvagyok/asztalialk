@@ -10,17 +10,19 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.ColumnSpan="2">Button 1</Button>
-        <Button Grid.Column="2">Button 2</Button>
-        <Button Grid.Row="1">Button 3</Button>
-        <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">Button 4</Button>
-        <Button Grid.Row="2">Button 5</Button>
+        <Button>Button 1</Button>
+        <Button Grid.Row="2">Button 2</Button>
+        <Button Grid.Column="1" Grid.RowSpan="3">Button 3</Button>
+        <Button Grid.Column="3" Grid.RowSpan="3">Button 4</Button>
+        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></GridSplitter>
+        <GridSplitter Grid.Column="2" Width="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></GridSplitter>
     </Grid>
 </Window>
