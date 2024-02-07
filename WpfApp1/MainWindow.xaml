@@ -14,14 +14,16 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Label Content="Name:"></Label>
+        <Label Content="Első szám:"></Label>
         <TextBox Margin="20" Height="20" Grid.Column="1"/>
-        <Label Content="Email:" Grid.Row="1"></Label>
+        <Label Content="Második szám:" Grid.Row="1"></Label>
         <TextBox Margin="20" Height="20" Grid.Row="1" Grid.Column="1"/>
         <Label Content="Comment:" Grid.Row="2"></Label>
         <TextBox Margin="20" Grid.Row="2" Grid.Column="1"/>
+        <Button Grid.Row="3"></Button>
 
     </Grid>
 </Window>
