@@ -868,4 +868,14 @@ GridSplitter - vízszintes
 <Grid>
     <GridSplitter Grid.Row="1" Height="5" HorizontalAlingment="Stretch" VerticalAlingment="Center">
 </Grid>
+
+Button - nyomógomb
+<Button>Hello, World!</Button>
+Ez a gomb nem csinál semmit, de fel tudunk iratkozni a Click eseményre.
+<Button Click="HelloWorldButton_Click">Hello, World!</Button>
+A C# forráskódban egy megfelelő metódusra lesz szükségünk a 'Click' kezeléséhez:
+private void HelloWorldButton_Click(object sender, RoutedEventArgs e)
+{
+    MessageBox.Show("Hello, World!");
+}
 */

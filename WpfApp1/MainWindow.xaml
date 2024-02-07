@@ -10,19 +10,18 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="5"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button>Button 1</Button>
-        <Button Grid.Row="2">Button 2</Button>
-        <Button Grid.Column="1" Grid.RowSpan="3">Button 3</Button>
-        <Button Grid.Column="3" Grid.RowSpan="3">Button 4</Button>
-        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></GridSplitter>
-        <GridSplitter Grid.Column="2" Width="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></GridSplitter>
+        <Label Content="Name:"></Label>
+        <TextBox Margin="20" Height="20" Grid.Column="1"/>
+        <Label Content="Email:" Grid.Row="1"></Label>
+        <TextBox Margin="20" Height="20" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Comment:" Grid.Row="2"></Label>
+        <TextBox Margin="20" Grid.Row="2" Grid.Column="1"/>
+
     </Grid>
 </Window>
