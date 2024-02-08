@@ -5,25 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Content="Első szám:"></Label>
-        <TextBox Margin="20" Height="20" Grid.Column="1"/>
-        <Label Content="Második szám:" Grid.Row="1"></Label>
-        <TextBox Margin="20" Height="20" Grid.Row="1" Grid.Column="1"/>
-        <Label Content="Comment:" Grid.Row="2"></Label>
-        <TextBox Margin="20" Grid.Row="2" Grid.Column="1"/>
-        <Button Grid.Row="3"></Button>
-
+        <TextBlock Grid.ColumnSpan="4" HorizontalAlignment="Center">Számológép</TextBlock>
+        <Label Grid.ColumnSpan="4" Name="kiir" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+        <Button Click="szam" Grid.Row="1" Content="7"></Button>
+        <Button Click="szam" Grid.Row="2" Content="4"></Button>
+        <Button Click="szam" Grid.Row="3" Content="1"></Button>
+        <Button Click="szam" Grid.Row="3" Grid.Column="1" Content="2"></Button>
+        <Button Click="szam" Grid.Row="1" Grid.Column="1" Content="8"></Button>
+        <Button Click="szam" Grid.Row="2" Grid.Column="1" Content="5"></Button>
+        <Button Click="szam" Grid.Row="1" Grid.Column="2" Content="9"></Button>
+        <Button Click="szam" Grid.Row="2" Grid.Column="2" Content="6"></Button>
+        <Button Click="szam" Grid.Row="3" Grid.Column="2" Content="3"></Button>
+        <Button Click="muvelet" Grid.Row="1" Grid.Column="3" Content="*"></Button>
+        <Button Click="muvelet" Grid.Row="2" Grid.Column="3" Content="/"></Button>
+        <Button Click="muvelet" Grid.Row="3" Grid.Column="3" Content="-"></Button>
+        <Button Click="muvelet" Grid.Row="4" Grid.Column="3" Content="+"></Button>
+        <Button Click="egyenlo" Grid.Row="4" Grid.Column="2" Content="="></Button>
+        <Button Click="szam" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Content="0"></Button>
     </Grid>
 </Window>

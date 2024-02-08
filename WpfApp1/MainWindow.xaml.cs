@@ -22,9 +22,26 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        int szamCount = 0;
+        string muveletEk = "";
+        private void szam(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo { FileName = @"https://google.com", UseShellExecute = true });
+            if (szamCount == 0)
+            {
+                szamCount++;
+                muveletEk += szamCount.ToString();
+                kiir.Content += ((Button)sender).Content.ToString();
+            }
+        }
+
+        private void muvelet(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("2");
+        }
+
+        private void egyenlo(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("0");
         }
     }
 }
