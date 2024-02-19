@@ -18,45 +18,86 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<hajo>hajok = new List<hajo>();
+        public List<Sutemeny> sutemenyek;
+
         public MainWindow()
         {
+            sutemenyek = new List<Sutemeny>();
             InitializeComponent();
-            //beolvasás
+            Beolvas();
+            BetoltRandom();
+            LegolcsobbEsLegdragabb();
+            DijazottakOsszesen();
         }
-        class hajo()
-        {
-            public int sorszam;
-            public string nev;
-            public string tipus;
-            public int maxutasszam;
-            public int berletdij;
 
-            public hajo(int sorszam, string nev, string tipus, int maxutasszam, int berletdij)
+        private void Beolvas()
+        {
+            // Süni;vegyes;false;300;db
+            foreach (string sor in File.ReadAllLines("cuki.txt"))
             {
-                this.sorszam = sorszam;
-                this.nev = nev;
-                this.tipus = tipus;
-                this.maxutasszam = maxutasszam;
-                this.berletdij = berletdij;
+                string[] adatok = sor.Split(';');
+                sutemenyek.Add(new Sutemeny(adatok[0], adatok[1], Convert.ToBoolean(adatok[2].ToLower()),
+                    int.Parse(adatok[3]), adatok[4]));
             }
         }
-        void beolvasas()
-        {
-            StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\Sétahajó_WPF\Sétahajó_WPF\hajo-1.txt");
-            f.ReadLine();
-            while (!f.EndOfStream)
-            {
-                string[] darabolt = f.ReadLine().Split('\t');
-                hajok.Add(new hajo(int.Parse(darabolt[0]), darabolt[1], darabolt[2], int.Parse(darabolt[3]), int.Parse(darabolt[4])));
-            }
-            f.Close();
 
+        private void BetoltRandom()
+        {
+            int sorszam = new Random().Next(1, sutemenyek.Count);
+            Sutemeny sutemeny = sutemenyek[sorszam];
+            ajanlat.Content = $"Mai ajánlatunk: {sutemeny.nev}";
         }
 
-        private void Keres()
+        private void LegolcsobbEsLegdragabb()
         {
+            Sutemeny max = sutemenyek[0];
+            Sutemeny min = sutemenyek[0];
+            for (int i = 1; i < sutemenyek.Count; i++)
+            {
+                if (sutemenyek[i].ar > max.ar)
+                {
+                    max = sutemenyek[i];
+                }
+                if (sutemenyek[i].ar < min.ar)
+                {
+                    min = sutemenyek[i];
+                }
+            }
+            lblmax.Content = max.nev;
+            lblmin.Content = min.nev;
 
+        }
+        private void DijazottakOsszesen()
+        {
+            int dijazottakszama = 0;
+            for (int i = 0; i < sutemenyek.Count; i++)
+            {
+                if (sutemenyek[i].dijazottE == true)
+                {
+                    dijazottakszama++;
+                }
+            }
+            dijazottossz.Content = $"{dijazottakszama} féle díjnyertes édességből választhat.";
         }
     }
-}
+
+
+
+    public class Sutemeny
+    {
+        public string nev;
+        public string tipus;
+        public bool dijazottE;
+        public int ar;
+        public string egyseg;
+
+        public Sutemeny(string nev, string tipus, bool dijazottE, int ar, string egyseg)
+        {
+            this.nev = nev;
+            this.tipus = tipus;
+            this.dijazottE = dijazottE;
+            this.ar = ar;
+            this.egyseg = egyseg;
+        }
+    }
+};
