@@ -33,7 +33,7 @@ namespace WpfApp1
         private void Beolvas()
         {
             // Süni;vegyes;false;300;db
-            foreach (string sor in File.ReadAllLines("cuki.txt"))
+            foreach (string sor in File.ReadAllLines(@"C:\Users\kemenes.marton\Downloads\Cukrászda_WPF\Cukrászda_WPF\cuki.txt"))
             {
                 string[] adatok = sor.Split(';');
                 sutemenyek.Add(new Sutemeny(adatok[0], adatok[1], Convert.ToBoolean(adatok[2].ToLower()),
