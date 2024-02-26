@@ -878,4 +878,68 @@ private void HelloWorldButton_Click(object sender, RoutedEventArgs e)
 {
     MessageBox.Show("Hello, World!");
 }
+
+CheckBox vezérlő
+logikai értéket kérhetünk be vele
+
+<CheckBox x:Name="cbxOne" isChecked="False">Check Box One</CheckBox>
+<CheckBox x:Name="cbxTwo" isChecked="True">Check Box Two</CheckBox>
+<CheckBox x:Name="cbxThree" isChecked="False" isEnabled="False">Check Box Three</CheckBox>
+<CheckBox x:Name="cbxFour" isChecked="True" isEnabled="False">Check Box Four</CheckBox>
+<Button x:Name="btnShowMe" width="80" Click="btnShowMe_Click">Show Me</Button>
+
+Ha a késöbbiekben akarunk hivatkozni rájuk a kódból, névvel kell ellásuk őket
+
+private void btnShowMe_Click(object sender, RoutedEventArgs e)
+{
+    if (cbxOne.IsChecked == true)
+        MessageBox.Show("Első");
+    if ((bool) cbxTwo.IsChecked)
+        MessageBox.Show("Második");
+}
+Beállíthatjuk, hogy legyen 3 különböző állapota, igaz, hamis és meg nem határozott (null):
+<CheckBox IsThreeState="True" ... /> (ezért kell az IsChecked értékét bool-ra konvertálni)
+
+RadioButton
+több lehetséges opció közül választhatunk ki egyet egy időben
+<StackPanel Margin="40">
+    <Label FontWeight="Bold">Okos vagyok?</Label>
+    <RadioButton GroupName="okos">Igen</RadioButton>
+    <RadioButton GroupName="okos">Nem</RadioButton>
+    <RadioButton GroupName="okos" IsChecked="True">Talán</RadioButton>
+
+    <Label FontWeight="Bold">Szép vagy?</Label>
+    <RadioButton GroupName="szép">Igen</RadioButton>
+    <RadioButton GroupName="szép">Nem</RadioButton>
+    <RadioButton GroupName="szép" IsChecked="True">Talán</RadioButton>
+</StackPanel>
+
+PassWordBox vezérlő
+Ugyanúgy működik, mint a TextBox, de meg tudjuk védeni az információt a kíváncsi tekintetektől
+<StackPanel Margin="10">
+    <Label>User name:</Label>
+    <TextBox />
+    <Label>Password:</Label>
+    <PassWordBox />
+</StackPanel>
+
+- <PassWordBox PasswordChar="X" />
+- <PassWordBox MaxLength="8" />
+
+Image vezérlő
+<Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Shiba-inu_Magyarorsz%C3%A1g.jpg/640px-Shiba-inu_Magyarorsz%C3%A1g.jpg"/>
+-ahelyett, hogy külső forrásból töltenénk le a képet, érdemes egybecsomagolni az alkalmazással:
+    - Solution Explorerben projekt nevére jobb klikk -> Add -> New Folder: Kepek
+    - Kepek jobb click -> Add -> Existing Item -> Tallózás -> képfájl -> Add
+    - képfájl: Properties -> Build Action: Resource
+
+    <Image Source="Kepek/kutya-osszel-1.jpg"/>
+- másik fontos tulajdonság a Strech
+    Lehetséges értékei:
+        - Uniform (alapértelmezett): A kép automatikusan méreteződik, hogy beférjen a rendelkezésre álló helyre. Méretarány viszont kötött, a kép nem torzul
+        - UniformToFill: méretarány itt is kötött, de lehet hogy a kép egyes részei kilógnak
+        - Fill: a méretarány nem kötött, a kép torzulhat
+        - None: Ha a kép kisebb, mint a rendelkezésre álló terület, semmi sem történik. Ha a kép nagyobb, akkor a kilógó terület le lesz vágva
+
+
 */
