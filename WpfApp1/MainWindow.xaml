@@ -8,7 +8,8 @@
         Title="MainWindow" Height="720" Width="1280">
     <Grid Background="Bisque">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -20,19 +21,31 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label FontWeight="Bold" Content="PizzaMans" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3"></Label>
-        <Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Source="https://www.foodandwine.com/thmb/Wd4lBRZz3X_8qBr69UOu2m7I2iw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-cheese-pizza-FT-RECIPE0422-31a2c938fc2546c9a07b7011658cfd05.jpg"></Image>
-        <StackPanel Margin="40" Grid.Row="1" Grid.RowSpan="2">
-            <Label FontWeight="Bold">Milyen fatja pizzát szeretnél rendelni?</Label>
-            <RadioButton GroupName="pizzaTyp">Margherita</RadioButton>
-            <RadioButton GroupName="pizzaTyp">Romana</RadioButton>
-            <RadioButton GroupName="pizzaTyp">Napoletana</RadioButton>
+        <TextBlock FontSize="40" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="4">PizzaMans</TextBlock>
+        <Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="5" Source="https://www.foodandwine.com/thmb/Wd4lBRZz3X_8qBr69UOu2m7I2iw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-cheese-pizza-FT-RECIPE0422-31a2c938fc2546c9a07b7011658cfd05.jpg"></Image>
+        <StackPanel Margin="40" Grid.Row="1" Grid.RowSpan="3">
+            <Label FontSize="20" FontWeight="Bold">Milyen fatja pizzát szeretnél rendelni?</Label>
+            <RadioButton FontSize="15" GroupName="pizzaTyp" Name="margherita">Pizza Margherita (32cm) 3.199.-</RadioButton>
+            <RadioButton FontSize="15" GroupName="pizzaTyp" Name="romana">Pizza Romana (32cm) 3.499.-</RadioButton>
+            <RadioButton FontSize="15" GroupName="pizzaTyp" Name="napoletana">Pizza Napoletana (32cm) 3.499.-</RadioButton>
 
-            <Label FontWeight="Bold">Extra feltét:</Label>
-            <CheckBox x:Name="extraCheese">Extra sajt</CheckBox>
-            <CheckBox x:Name="extraHam">Extra sonka</CheckBox>
-            <CheckBox x:Name="extraBacon" >Extra bacon</CheckBox>
+            <Label FontSize="20" FontWeight="Bold">Extra feltét:</Label>
+            <CheckBox FontSize="15" Name="extraCheese">Extra sajt (50g) 400.-</CheckBox>
+            <CheckBox FontSize="15" Name="extraHam">Extra sonka (100g) 300.-</CheckBox>
+            <CheckBox FontSize="15" Name="extraBacon" >Extra bacon (75g) 800.-</CheckBox>
         </StackPanel>
-        <Button Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Megrendelés" Name="orderBtn" Width="150" Height="50"></Button>
+        <Button Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Megrendelés" Click="orderBtn_Click" Width="250" Height="100"></Button>
+        <TextBlock FontSize="30" FontWeight="Light" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">Megrendelő adatai</TextBlock>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3">
+            <TextBlock FontSize="25" HorizontalAlignment="Left">Név:</TextBlock>
+            <TextBox Name="deliveryName" Margin="5" Width="300" Text=""></TextBox>
+            <TextBlock FontSize="25" HorizontalAlignment="Left">Telefon:</TextBlock>
+            <TextBox Name="deliveryPhone" Margin="5" Width="300" Text=""></TextBox>
+            <TextBlock FontSize="25" HorizontalAlignment="Left">Cím:</TextBlock>
+            <TextBox Name="deliveryAdress" Margin="5" Width="300" Text=""></TextBox>
+            <TextBlock FontSize="25" HorizontalAlignment="Left">Megjegyzés:</TextBlock>
+            <TextBox Name="deliveryMessage" Margin="5" Width="300" Text=""></TextBox>
+        </StackPanel>
+        <Label FontSize="15" Name="deliveryInfos" Content="" Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
     </Grid>
 </Window>
