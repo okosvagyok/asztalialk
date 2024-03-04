@@ -6,46 +6,27 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
-    <Grid Background="Bisque">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock FontSize="40" FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="4">PizzaMans</TextBlock>
-        <Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="5" Source="https://www.foodandwine.com/thmb/Wd4lBRZz3X_8qBr69UOu2m7I2iw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-cheese-pizza-FT-RECIPE0422-31a2c938fc2546c9a07b7011658cfd05.jpg"></Image>
-        <StackPanel Margin="40" Grid.Row="1" Grid.RowSpan="3">
-            <Label FontSize="20" FontWeight="Bold">Milyen fatja pizzát szeretnél rendelni?</Label>
-            <RadioButton FontSize="15" GroupName="pizzaTyp" Name="margherita">Pizza Margherita (32cm) 3.199.-</RadioButton>
-            <RadioButton FontSize="15" GroupName="pizzaTyp" Name="romana">Pizza Romana (32cm) 3.499.-</RadioButton>
-            <RadioButton FontSize="15" GroupName="pizzaTyp" Name="napoletana">Pizza Napoletana (32cm) 3.499.-</RadioButton>
-
-            <Label FontSize="20" FontWeight="Bold">Extra feltét:</Label>
-            <CheckBox FontSize="15" Name="extraCheese">Extra sajt (50g) 400.-</CheckBox>
-            <CheckBox FontSize="15" Name="extraHam">Extra sonka (100g) 300.-</CheckBox>
-            <CheckBox FontSize="15" Name="extraBacon" >Extra bacon (75g) 800.-</CheckBox>
-        </StackPanel>
-        <Button Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Megrendelés" Click="orderBtn_Click" Width="250" Height="100"></Button>
-        <TextBlock FontSize="30" FontWeight="Light" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">Megrendelő adatai</TextBlock>
-        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3">
-            <TextBlock FontSize="25" HorizontalAlignment="Left">Név:</TextBlock>
-            <TextBox Name="deliveryName" Margin="5" Width="300" Text=""></TextBox>
-            <TextBlock FontSize="25" HorizontalAlignment="Left">Telefon:</TextBlock>
-            <TextBox Name="deliveryPhone" Margin="5" Width="300" Text=""></TextBox>
-            <TextBlock FontSize="25" HorizontalAlignment="Left">Cím:</TextBlock>
-            <TextBox Name="deliveryAdress" Margin="5" Width="300" Text=""></TextBox>
-            <TextBlock FontSize="25" HorizontalAlignment="Left">Megjegyzés:</TextBlock>
-            <TextBox Name="deliveryMessage" Margin="5" Width="300" Text=""></TextBox>
-        </StackPanel>
-        <Label FontSize="15" Name="deliveryInfos" Content="" Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Image Grid.ColumnSpan="3" Source="C:\Users\kemenes.marton\Downloads\kopapirollo\kopapirollo\kopapirollo.jpg"></Image>
+        <Label Name="jatekAllas" Grid.Row="1" Grid.ColumnSpan="3" Content="Kő-papír-olló" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50"></Label>
+        <Image x:Name="gepValaszt" Grid.Row="2" Width="200" Height="200"></Image>
+        <Image x:Name="jatekosValasztasa" Grid.Row="2" Grid.Column="2" Width="200" Height="200"></Image>
+        <TextBlock Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Gép választása</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30">Játékos választása</TextBlock>
+        <Image x:Name="jatekosValasztKo" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" Height="150" Source="C:\Users\kemenes.marton\Downloads\kopapirollo\kopapirollo\kő.jpg" MouseLeftButtonDown="jatekosKoValaszt"></Image>
+        <Image x:Name="jatekosValasztPapir" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="150" Source="C:\Users\kemenes.marton\Downloads\kopapirollo\kopapirollo\papír.jpg"></Image>
+        <Image x:Name="jatekosValasztOllo" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Height="150" Source="C:\Users\kemenes.marton\Downloads\kopapirollo\kopapirollo\olló.jpg"></Image>
     </Grid>
 </Window>
