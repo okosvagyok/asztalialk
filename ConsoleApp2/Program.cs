@@ -941,5 +941,29 @@ Image vezérlő
         - Fill: a méretarány nem kötött, a kép torzulhat
         - None: Ha a kép kisebb, mint a rendelkezésre álló terület, semmi sem történik. Ha a kép nagyobb, akkor a kilógó terület le lesz vágva
 
+ListBox
+<ListBox Margin="10,10,0,13" Name="listBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="200">
+    <ListBoxItem Content="Coffee"></ListBoxItem>
+    <ListBoxItem Content="Tea"></ListBoxItem>
+    <ListBoxItem Content="Orange Juice"></ListBoxItem>
+    <ListBoxItem Content="Milk"></ListBoxItem>
+    <ListBoxItem Content="Iced Tea"></ListBoxItem>
+    <ListBoxItem Content="Mango Shake"></ListBoxItem>
+</ListBox>
+    elemek hozzáadása:
+    private void button1_Click(object sender, RoutedEventArgs e)
+    {
+        listBox1.Items.Add(textBox1.Text);
+    }
 
+    elemek törlése
+    private void DeleteButton_Click(object sender, RoutedEventArgs e)
+    {
+        listBox1.Items.RemoveAt(listBox1.Items.IndexOf(listBox1.SelectedItem))
+    }
+    elemek rendezése
+    private void button1_Click(object sender, RoutedEventArgs e)
+    {
+        listBox1.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("Content", System.ComponentModel.ListSortDirection.Ascending))
+    }
 */

@@ -21,13 +21,65 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            randomSzamok();
         }
-        /*
-        private void jatekosKoValaszt_MouseLeftButtonDown(object sender, RoutedEventArgs e)
+        Random rnd = new Random();
+        List<int> szamok = new List<int>();
+        List<int> szamokR = new List<int>();
+        private void randomSzamok()
         {
-            Uri resourceUri = new Uri("C:/Users/kemenes.marton/Downloads/kopapirollo/kopapirollo/kő.jpg", UriKind.Relative);
-            jatekosValasztasa.Source = new BitmapImage(resourceUri);
+            for (int i = 0; i < 6; i++)
+            {
+                szamokR.Add(0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                int szam = rnd.Next(1, 101);
+                szamok.Add(szam);
+            }
+            listItem1.Content = szamok[0];
+            listItem2.Content = szamok[1];
+            listItem3.Content = szamok[2];
+            listItem4.Content = szamok[3];
+            listItem5.Content = szamok[4];
+            listItem6.Content = szamok[5];
         }
-        */
+
+        private void orderButton(object sender, RoutedEventArgs e)
+        {
+            if ((bool)paros.IsChecked && (bool)tiz.IsChecked) { MessageBox.Show("Csak egyet válassz ki!"); }
+            if ((bool)paros.IsChecked)
+            {
+                for (int i = 0; i < szamok.Count(); i++)
+                {
+                    if (szamok[i] % 2 == 0)
+                    {
+                        szamokR.Insert(i, szamok[i]);
+                    }
+                }
+                oListItem1.Content = szamokR[0];
+                oListItem2.Content = szamokR[1];
+                oListItem3.Content = szamokR[2];
+                oListItem4.Content = szamokR[3];
+                oListItem5.Content = szamokR[4];
+                oListItem6.Content = szamokR[5];
+            }
+            if ((bool)tiz.IsChecked)
+            {
+                for (int i = 0; i < szamok.Count(); i++)
+                {
+                    if (szamok[i] % 10 == 0)
+                    {
+                        szamokR.Insert(i, szamok[i]);
+                    }
+                }
+                oListItem1.Content = szamokR[0];
+                oListItem2.Content = szamokR[1];
+                oListItem3.Content = szamokR[2];
+                oListItem4.Content = szamokR[3];
+                oListItem5.Content = szamokR[4];
+                oListItem6.Content = szamokR[5];
+            }
+        }
     }
 };
