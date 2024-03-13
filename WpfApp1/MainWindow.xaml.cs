@@ -32,6 +32,7 @@ namespace WpfApp1
             Ahalmaz.Items.Clear();
             Bhalmaz.Items.Clear();
             AuB.Items.Clear();
+            AmB.Items.Clear();
             AminuszB.Items.Clear();
             BminuszA.Items.Clear();
             if (aHalmazSzama.Text == "" || bHalmazSzama.Text == "") { MessageBox.Show("Írj be mindkét halmaznak elemszámot!"); };
@@ -50,14 +51,6 @@ namespace WpfApp1
             List<int> kozosek = aHalmaz.Intersect(bHalmaz).ToList();
             for (int i = 0; i < kozosek.Count(); i++)
             {
-                AuB.Items.Add(kozosek[i]);
-                if (!AuB.Items.Contains(aHalmaz[i]))
-                {
-                    AuB.Items.Add(aHalmaz[i]);
-                }else if (!AuB.Items.Contains(bHalmaz[i]))
-                {
-                    AuB.Items.Add(bHalmaz[i]);
-                }
                 AmB.Items.Add(kozosek[i]);
             }
             for (int i = 0; i < aHalmaz.Count(); i++)
