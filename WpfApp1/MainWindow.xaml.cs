@@ -30,10 +30,6 @@ namespace WpfApp1
         {
             for (int i = 0; i < 6; i++)
             {
-                szamokR.Add(0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
                 int szam = rnd.Next(1, 101);
                 szamok.Add(szam);
             }
@@ -47,6 +43,11 @@ namespace WpfApp1
 
         private void orderButton(object sender, RoutedEventArgs e)
         {
+            szamokR.Clear();
+            for (int i = 0; i < 6; i++)
+            {
+                szamokR.Add(0);
+            }
             if ((bool)paros.IsChecked && (bool)tiz.IsChecked) { MessageBox.Show("Csak egyet válassz ki!"); }
             if ((bool)paros.IsChecked)
             {
