@@ -32,6 +32,8 @@ namespace WpfApp1
             Ahalmaz.Items.Clear();
             Bhalmaz.Items.Clear();
             AuB.Items.Clear();
+            AminuszB.Items.Clear();
+            BminuszA.Items.Clear();
             if (aHalmazSzama.Text == "" || bHalmazSzama.Text == "") { MessageBox.Show("Írj be mindkét halmaznak elemszámot!"); };
             for (int i = 0; i < int.Parse(aHalmazSzama.Text); i++)
             {
