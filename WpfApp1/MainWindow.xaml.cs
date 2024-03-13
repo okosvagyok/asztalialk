@@ -59,23 +59,18 @@ namespace WpfApp1
             List<int> kozosek = aHalmaz.Intersect(bHalmaz).ToList();
             for (int i = 0; i < kozosek.Count(); i++)
             {
-                AuB.Items.Add(kozosek[i]);
-                if (!AuB.Items.Contains(aHalmaz[i]))
-                {
-                    AuB.Items.Add(aHalmaz[i]);
-                }else if (!AuB.Items.Contains(bHalmaz[i]))
-                {
-                    AuB.Items.Add(bHalmaz[i]);
-                }
                 AmB.Items.Add(kozosek[i]);
             }
+
             for (int i = 0; i < aHalmaz.Count(); i++)
             {
                 AminuszB.Items.Add(aHalmaz[i]);
+                AuB.Items.Add(aHalmaz[i]);
             }
             for (int i = 0; i < bHalmaz.Count(); i++)
             {
                 BminuszA.Items.Add(bHalmaz[i]);
+                AuB.Items.Add(bHalmaz[i]);
             }
         }
     }
