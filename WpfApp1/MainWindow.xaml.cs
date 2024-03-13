@@ -21,65 +21,50 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            randomSzamok();
         }
         Random rnd = new Random();
-        List<int> szamok = new List<int>();
-        List<int> szamokR = new List<int>();
-        private void randomSzamok()
+        List<int> aHalmaz = new List<int>();
+        List<int> bHalmaz = new List<int>();
+        private void eloallito(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 6; i++)
+            aHalmaz.Clear();
+            bHalmaz.Clear();
+            Ahalmaz.Items.Clear();
+            Bhalmaz.Items.Clear();
+            AuB.Items.Clear();
+            if (aHalmazSzama.Text == "" || bHalmazSzama.Text == "") { MessageBox.Show("Írj be mindkét halmaznak elemszámot!"); };
+            for (int i = 0; i < int.Parse(aHalmazSzama.Text); i++)
             {
-                int szam = rnd.Next(1, 101);
-                szamok.Add(szam);
+                int szam = rnd.Next(1, 51);
+                aHalmaz.Add(szam);
+                Ahalmaz.Items.Add(szam);
             }
-            listItem1.Content = szamok[0];
-            listItem2.Content = szamok[1];
-            listItem3.Content = szamok[2];
-            listItem4.Content = szamok[3];
-            listItem5.Content = szamok[4];
-            listItem6.Content = szamok[5];
-        }
-
-        private void orderButton(object sender, RoutedEventArgs e)
-        {
-            szamokR.Clear();
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < int.Parse(bHalmazSzama.Text); i++)
             {
-                szamokR.Add(0);
+                int szam = rnd.Next(1, 51);
+                bHalmaz.Add(szam);
+                Bhalmaz.Items.Add(szam);
             }
-            if ((bool)paros.IsChecked && (bool)tiz.IsChecked) { MessageBox.Show("Csak egyet válassz ki!"); }
-            if ((bool)paros.IsChecked)
+            List<int> kozosek = aHalmaz.Intersect(bHalmaz).ToList();
+            for (int i = 0; i < kozosek.Count(); i++)
             {
-                for (int i = 0; i < szamok.Count(); i++)
+                AuB.Items.Add(kozosek[i]);
+                if (!AuB.Items.Contains(aHalmaz[i]))
                 {
-                    if (szamok[i] % 2 == 0)
-                    {
-                        szamokR.Insert(i, szamok[i]);
-                    }
-                }
-                oListItem1.Content = szamokR[0];
-                oListItem2.Content = szamokR[1];
-                oListItem3.Content = szamokR[2];
-                oListItem4.Content = szamokR[3];
-                oListItem5.Content = szamokR[4];
-                oListItem6.Content = szamokR[5];
-            }
-            if ((bool)tiz.IsChecked)
-            {
-                for (int i = 0; i < szamok.Count(); i++)
+                    AuB.Items.Add(aHalmaz[i]);
+                }else if (!AuB.Items.Contains(bHalmaz[i]))
                 {
-                    if (szamok[i] % 10 == 0)
-                    {
-                        szamokR.Insert(i, szamok[i]);
-                    }
+                    AuB.Items.Add(bHalmaz[i]);
                 }
-                oListItem1.Content = szamokR[0];
-                oListItem2.Content = szamokR[1];
-                oListItem3.Content = szamokR[2];
-                oListItem4.Content = szamokR[3];
-                oListItem5.Content = szamokR[4];
-                oListItem6.Content = szamokR[5];
+                AmB.Items.Add(kozosek[i]);
+            }
+            for (int i = 0; i < aHalmaz.Count(); i++)
+            {
+                AminuszB.Items.Add(aHalmaz[i]);
+            }
+            for (int i = 0; i < bHalmaz.Count(); i++)
+            {
+                BminuszA.Items.Add(bHalmaz[i]);
             }
         }
     }
