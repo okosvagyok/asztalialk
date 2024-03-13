@@ -32,36 +32,34 @@ namespace WpfApp1
             Ahalmaz.Items.Clear();
             Bhalmaz.Items.Clear();
             AuB.Items.Clear();
-            AmB.Items.Clear();
             AminuszB.Items.Clear();
             BminuszA.Items.Clear();
             if (aHalmazSzama.Text == "" || bHalmazSzama.Text == "") { MessageBox.Show("Írj be mindkét halmaznak elemszámot!"); };
             for (int i = 0; i < int.Parse(aHalmazSzama.Text); i++)
             {
-                int szam;
-                do
-                {
-                    szam = rnd.Next(1, 51);
-                    aHalmaz.Add(szam);
-                    Ahalmaz.Items.Add(szam);
-                } while(!aHalmaz.Contains(szam));
+                int szam = rnd.Next(1, 51);
+                aHalmaz.Add(szam);
+                Ahalmaz.Items.Add(szam);
             }
             for (int i = 0; i < int.Parse(bHalmazSzama.Text); i++)
             {
-                int szam;
-                do
-                {
-                    szam = rnd.Next(1, 51);
-                    bHalmaz.Add(szam);
-                    Bhalmaz.Items.Add(szam);
-                } while (!bHalmaz.Contains(szam));
+                int szam = rnd.Next(1, 51);
+                bHalmaz.Add(szam);
+                Bhalmaz.Items.Add(szam);
             }
             List<int> kozosek = aHalmaz.Intersect(bHalmaz).ToList();
             for (int i = 0; i < kozosek.Count(); i++)
             {
+                AuB.Items.Add(kozosek[i]);
+                if (!AuB.Items.Contains(aHalmaz[i]))
+                {
+                    AuB.Items.Add(aHalmaz[i]);
+                }else if (!AuB.Items.Contains(bHalmaz[i]))
+                {
+                    AuB.Items.Add(bHalmaz[i]);
+                }
                 AmB.Items.Add(kozosek[i]);
             }
-
             for (int i = 0; i < aHalmaz.Count(); i++)
             {
                 AminuszB.Items.Add(aHalmaz[i]);
