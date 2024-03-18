@@ -12,28 +12,41 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="A" FontSize="50" HorizontalAlignment="Center"></TextBlock>
-        <ListBox Name="Ahalmaz" Margin="10, 80, 10, 10"></ListBox>
-        <TextBlock Grid.Column="1" Text="B" FontSize="45" HorizontalAlignment="Center"></TextBlock>
-        <ListBox Name="Bhalmaz" Grid.Column="1" Margin="10, 80, 10, 10"></ListBox>
-        <TextBlock Grid.Column="2" Text="A únió B" FontSize="45" HorizontalAlignment="Center"></TextBlock>
-        <ListBox Name="AuB" Grid.Column="2" Margin="10, 80, 10, 10"></ListBox>
-        <TextBlock Grid.Column="3" Text="A metsz B" FontSize="45" HorizontalAlignment="Center"></TextBlock>
-        <ListBox Name="AmB" Grid.Column="3" Margin="10, 80, 10, 10"></ListBox>
-        <TextBlock Grid.Column="4" Text="A\B" FontSize="45" HorizontalAlignment="Center"></TextBlock>
-        <ListBox Name="AminuszB" Grid.Column="4" Margin="10, 80, 10, 10"></ListBox>
-        <TextBlock Grid.Column="5" Text="B\A" FontSize="45" HorizontalAlignment="Center"></TextBlock>
-        <ListBox Name="BminuszA" Grid.Column="5" Margin="10, 80, 10, 10"></ListBox>
-        <TextBlock Text="A halmazok elemszáma" Grid.Row="2" FontSize="30" Grid.ColumnSpan="2"></TextBlock>
-        <TextBox Name="aHalmazSzama" Text="" Grid.Row="1" Margin="40, 70, 40, 70"></TextBox>
-        <TextBox Name="bHalmazSzama" Text="" Grid.Row="1" Grid.Column="1" Margin="40, 70, 40, 70"></TextBox>
-        <Button Grid.Column="2" Grid.Row="2" Width="125" Height="50" Content="Előállít" FontSize="25" Click="eloallito"></Button>
+        <TextBlock Text="Oscar díjas filmek" VerticalAlignment="Center"></TextBlock>
+        <ListBox Grid.Row="1" Grid.RowSpan="7" Margin="10, 10, 10, 10" Name="oscarsFilms">
+
+        </ListBox>
+        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="Címe: "></TextBlock>
+        <TextBox Grid.Column="2" Height="25" Width="250" Name="newTitle"></TextBox>
+        <TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Text="Év: "></TextBlock>
+        <TextBox Grid.Column="2" Grid.Row="1" Height="25" Width="250" Name="newYear"></TextBox>
+        <TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Text="Jelölések száma: "></TextBlock>
+        <TextBox Grid.Column="2" Grid.Row="2" Height="25" Width="250" Name="newNominees"></TextBox>
+        <TextBlock Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="Díjak száma: "></TextBlock>
+        <TextBox Grid.Column="2" Grid.Row="3" Height="25" Width="250" Name="newAwards"></TextBox>
+        <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="20" Content="Új film felvétele" Name="newFilm" Click="newFilm_Click"></Button>
+        <TextBlock Text="Film címe:" Grid.Row="5" Grid.Column="1"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="1" Margin="10, 30, 10, 10" Name="mostAwardsWon" Text=""></TextBlock>
+        <Button Content="Legtöbb díjat kapta" Grid.Column="2" Grid.Row="5" Margin="20" Name="mostAwards" Click="mostAwards_Click"></Button>
+        <TextBox Grid.Row="6" Grid.Column="1" Margin="20"></TextBox>
+        <Button Grid.Column="2" Grid.Row="6" Height="30" Width="125" Content="keres" Name="search"></Button>
+        <TextBlock Grid.Row="7" Grid.Column="1" Text="" Name="finds"></TextBlock>
+        <TextBox Grid.Column="3" Margin="25"></TextBox>
+        <ListBox Grid.Column="3" Grid.Row="1" Grid.RowSpan="6" Margin="10">
+            
+        </ListBox>
+        <Button Content="listázz" Grid.Row="7" Grid.Column="3" Width="50" Height="25" Name="toList"></Button>
     </Grid>
 </Window>

@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using System.Security.Policy;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,47 +22,63 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            read();
+            outTitles();
         }
         Random rnd = new Random();
-        List<int> aHalmaz = new List<int>();
-        List<int> bHalmaz = new List<int>();
-        private void eloallito(object sender, RoutedEventArgs e)
+        List<Films> films = new List<Films>();
+        public void read()
         {
-            aHalmaz.Clear();
-            bHalmaz.Clear();
-            Ahalmaz.Items.Clear();
-            Bhalmaz.Items.Clear();
-            AuB.Items.Clear();
-            AmB.Items.Clear();
-            AminuszB.Items.Clear();
-            BminuszA.Items.Clear();
-            if (aHalmazSzama.Text == "" || bHalmazSzama.Text == "") { MessageBox.Show("Írj be mindkét halmaznak elemszámot!"); };
-            for (int i = 0; i < int.Parse(aHalmazSzama.Text); i++)
+            StreamReader f = new StreamReader("C:\\Users\\kemenes.marton\\Downloads\\Oscar\\Oscar\\oscar.csv");
+            f.ReadLine();
+            while(!f.EndOfStream)
             {
-                int szam = rnd.Next(1, 51);
-                aHalmaz.Add(szam);
-                Ahalmaz.Items.Add(szam);
+                string sor = f.ReadLine();
+                films.Add(new Films(sor.Split(";")[0], sor.Split(";")[1], int.Parse(sor.Split(";")[2]), int.Parse(sor.Split(";")[3]), int.Parse(sor.Split(";")[4])));
             }
-            for (int i = 0; i < int.Parse(bHalmazSzama.Text); i++)
+        }
+        public void outTitles()
+        {
+            for (int i = 0; i < films.Count(); i++)
             {
-                int szam = rnd.Next(1, 51);
-                bHalmaz.Add(szam);
-                Bhalmaz.Items.Add(szam);
+                oscarsFilms.Items.Add(films[i].title);
             }
-            List<int> kozosek = aHalmaz.Intersect(bHalmaz).ToList();
-            for (int i = 0; i < kozosek.Count(); i++)
+        }
+        private void newFilm_Click(object sender, RoutedEventArgs e)
+        {
+            if (newTitle.Text == "" || newYear.Text == "" || newNominees.Text == "" || newAwards.Text == "") { MessageBox.Show("Kérlek, tölts ki minden mezőt!"); };
+            oscarsFilms.Items.Add(newTitle.Text);
+            films.Add(new Films(rnd.Next(1, 10).ToString(), newTitle.Text, int.Parse(newYear.Text), int.Parse(newAwards.Text), int.Parse(newNominees.Text)));
+        }
+        private void mostAwards_Click(object sender, RoutedEventArgs e)
+        {
+            int mostOscars = 0;
+            string mostOscarsTitle = "";
+            for (int i = 0; i < films.Count(); i++)
             {
-                AmB.Items.Add(kozosek[i]);
+                if (films[i].awards > mostOscars)
+                {
+                    mostOscars = films[i].awards;
+                    mostOscarsTitle = films[i].title;
+                }
             }
-            for (int i = 0; i < aHalmaz.Count(); i++)
+            mostAwardsWon.Text = mostOscarsTitle;
+        }
+        public class Films
+        {
+            public string id;
+            public string title;
+            public int year;
+            public int awards;
+            public int nominees;
+
+            public Films(string id, string title, int year, int awards, int nominees)
             {
-                AminuszB.Items.Add(aHalmaz[i]);
-                AuB.Items.Add(aHalmaz[i]);
-            }
-            for (int i = 0; i < bHalmaz.Count(); i++)
-            {
-                BminuszA.Items.Add(bHalmaz[i]);
-                AuB.Items.Add(bHalmaz[i]);
+                this.id = id;
+                this.title = title;
+                this.year = year;
+                this.awards = awards;
+                this.nominees = nominees;
             }
         }
     }
