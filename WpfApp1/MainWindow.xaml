@@ -24,7 +24,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Oscar díjas filmek" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Text="Oscar díjas filmek" VerticalAlignment="Center" Margin="25"></TextBlock>
         <ListBox Grid.Row="1" Grid.RowSpan="7" Margin="10, 10, 10, 10" Name="oscarsFilms">
 
         </ListBox>

@@ -70,7 +70,7 @@ namespace WpfApp1
                     MessageBox.Show("A film nem kaphatott több díjat, mint jelölést!");
                 }
             }
-            else //if (int.TryParse(newNominees.Text, out n) || int.TryParse(newAwards.Text, out n))
+            if (int.TryParse(newNominees.Text, out n) && int.TryParse(newAwards.Text, out n) && int.TryParse(newYear.Text, out n) && int.Parse(newNominees.Text) >= int.Parse(newAwards.Text))
             {
                 oscarsFilms.Items.Add(newTitle.Text);
                 films.Add(new Films(rnd.Next(1, 10).ToString(), newTitle.Text, int.Parse(newYear.Text), int.Parse(newAwards.Text), int.Parse(newNominees.Text)));
@@ -99,19 +99,19 @@ namespace WpfApp1
             }
             else
             {
-                    for (int i = 0; i < films.Count(); i++)
+                StringComparison cIgnore = StringComparison.OrdinalIgnoreCase;
+                for (int i = 0; i < films.Count(); i++)
+                {
+                    if (titles[i].Contains(searchFilms.Text, cIgnore))
                     {
-                        StringComparison cIgnore = StringComparison.OrdinalIgnoreCase;
-                        if (titles[i].Contains(searchFilms.Text, cIgnore))
-                        {
-                            finds.Text = "A keresett film címe: ";
-                            finds.Text += titles[i];
-                        }
+                        finds.Text = "A keresett film címe: ";
+                        finds.Text += titles[i];
                     }
-                    if (finds.Text.Length == 0)
-                    {
-                        MessageBox.Show("Sajnos nincs ilyen film a listában");
-                    }
+                }
+                if (finds.Text.Length == 0)
+                {
+                    MessageBox.Show("Sajnos nincs ilyen film a listában");
+                }
             }
         }
         private void toList_Click(object sender, RoutedEventArgs e)
