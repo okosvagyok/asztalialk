@@ -6,9 +6,8 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
-    <Grid Background="DeepPink">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -17,36 +16,11 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Oscar díjas filmek" VerticalAlignment="Center" Margin="25"></TextBlock>
-        <ListBox Grid.Row="1" Grid.RowSpan="7" Margin="10, 10, 10, 10" Name="oscarsFilms">
-
-        </ListBox>
-        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="Címe: "></TextBlock>
-        <TextBox Grid.Column="2" Height="25" Width="250" Name="newTitle"></TextBox>
-        <TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Text="Év: "></TextBlock>
-        <TextBox Grid.Column="2" Grid.Row="1" Height="25" Width="250" Name="newYear"></TextBox>
-        <TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Text="Jelölések száma: "></TextBlock>
-        <TextBox Grid.Column="2" Grid.Row="2" Height="25" Width="250" Name="newNominees"></TextBox>
-        <TextBlock Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="Díjak száma: "></TextBlock>
-        <TextBox Grid.Column="2" Grid.Row="3" Height="25" Width="250" Name="newAwards"></TextBox>
-        <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="20" Content="Új film felvétele" Name="newFilm" Click="newFilm_Click"></Button>
-        <TextBlock Text="Film címe:" Grid.Row="5" Grid.Column="1"></TextBlock>
-        <TextBlock Grid.Row="5" Grid.Column="1" Margin="10, 30, 10, 10" Name="mostAwardsWon" Text=""></TextBlock>
-        <Button Content="Legtöbb díjat kapta" Grid.Column="2" Grid.Row="5" Margin="20" Name="mostAwards" Click="mostAwards_Click"></Button>
-        <TextBox Grid.Row="6" Grid.Column="1" Margin="20" Name="searchFilms"></TextBox>
-        <Button Grid.Column="2" Grid.Row="6" Height="30" Width="125" Content="keres" Name="search" Click="search_Click"></Button>
-        <TextBlock Grid.Row="7" Grid.Column="1" Text="" Name="finds"></TextBlock>
-        <TextBox Grid.Column="3" Margin="25" Name="findsToList"></TextBox>
-        <ListBox Grid.Column="3" Grid.Row="1" Grid.RowSpan="6" Margin="10" Name="findsFilms">
-            
-        </ListBox>
-        <Button Content="listázz" Grid.Row="7" Grid.Column="3" Width="50" Height="25" Name="toList" Click="toList_Click"></Button>
+        <Canvas>
+            <Ellipse Fill="Aquamarine" Canvas.Left="10" Canvas.Top="40" Width="300" Height="300" Stroke="Beige" StrokeThickness="5" Panel.ZIndex="1"></Ellipse>
+            <Rectangle Fill="CadetBlue" Canvas.Left="170" Canvas.Top="60" Width="150" Height="200" Panel.ZIndex="0"></Rectangle>
+            <Path Fill="Chartreuse" Canvas.Left="255" Canvas.Top="180" Width="70" Height="90" Panel.ZIndex="0"></Path>
+        </Canvas>
     </Grid>
 </Window>

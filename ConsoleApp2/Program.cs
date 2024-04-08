@@ -966,4 +966,47 @@ ListBox
     {
         listBox1.Items.SortDescriptions.Add(new System.ComponentModel.SortDescription("Content", System.ComponentModel.ListSortDirection.Ascending))
     }
+
+ComboBox vezérlő
+egy értéket kiválaszthatunk a legördülő menüből
+<ComboBox Margin="10,10,0,13" Name="ComboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="30">
+    <ComboBoxItem Content="Coffee"></ComboBoxItem>
+    <ComboBoxItem Content="Tea"></ComboBoxItem>
+    <ComboBoxItem Content="Orange Juice"></ComboBoxItem>
+    <ComboBoxItem Content="Milk"></ComboBoxItem>
+    <ComboBoxItem Content="Iced Tea"></ComboBoxItem>
+</ComboBox>
+elem hozzáadása a ComboBoxhoz
+private void AddButton_Click(object sender, RoutedEventArgs e)
+{
+    ComboBox1.Items.Add(TextBox1.Text);
+}
+elem törlése
+ComboBox1.Items.RemoveAt(ComboBox1.Items.IndexOf(ComboBox1.SelectedItem));
+
+Vezérlők, melyek konténerként működnek más vezérlők számára:
+Canvas, WrapPanel, StackPanel, DockPanel, Grid, UniformGrid
+
+Canvas
+Elsősorban rajzok készítéséhez használjuk, de elhelyezhetünk rajta más vezérlőket is, a pozicionálásról mi gondoskodunk (alapból a bal felső sarok)
+<Canvas>
+    <Button Canvas.Left="10">Top Left</Button>
+    <Button Canvas.Right="10">Top Right</Button>
+    <Button Canvas.Left="10" Camvas.Bottom="10">Bottom Left</Button>
+    <Button Canvas.Right="10" Canvas.Bottom="10">Bottom Right</Button>
+</Canvas>
+
+Canvas - Z Index tulajdonság
+Ha a vezérlők átfedésbe kerülnek, meghatározhatjuk a rétegzési sorrendet. Alapból a később meghatározott kerül felülre.
+<Canvas>
+    <Ellipse Fill="LightGray" Canvas.Left="25" Canvas.Top="25" Width="200" Height="200" />
+    <Rectangle Panel.ZIndex="2" Fill="LightBlue" Canvas.Left="25" Canvas.Top="25" Width="50" Height="50">
+    <Rectangle Panel.ZIndex="1" Fill="LightCoral" Canvas.Left="25" Canvas.Top="50" Width="50" Height="50">
+    <Rectangle Panel.ZIndex="3" Fill="LightGreen" Canvas.Left="25" Canvas.Top="75" Width="50" Height="50">
+</Canvas>
+A ZIndex alapból 0, minél nagyobb értéket adunk neki, annál felsőbb rétegbe kerül az objektum
+Alakzatok
+Ellipse, Line, Path, Polygon, Polyline, Rectangle
+Közös tulajdonságok
+Stroke (szegély), StrokeThickness, Fill
 */
