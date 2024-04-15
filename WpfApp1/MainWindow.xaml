@@ -18,16 +18,20 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Canvas>
-            <Ellipse Fill="Aquamarine" Canvas.Left="520" Canvas.Top="10" Width="200" Height="200" Stroke="Beige" StrokeThickness="5" Panel.ZIndex="0"></Ellipse>
-            <Rectangle Fill="AliceBlue" Canvas.Left="590" Canvas.Top="210" Width="50" Height="75" Stroke="Coral" Panel.ZIndex="0"></Rectangle>
-            <Rectangle Fill="CadetBlue" Canvas.Left="520" Canvas.Top="285" Width="200" Height="250" Panel.ZIndex="0"></Rectangle>
-            <Rectangle Fill="Chocolate" Canvas.Left="520" Canvas.Top="535" Width="60" Height="150" Panel.ZIndex="0"></Rectangle>
-            <Rectangle Fill="Chocolate" Canvas.Left="660" Canvas.Top="535" Width="60" Height="150" Panel.ZIndex="0"></Rectangle>
-            <Rectangle Fill="DodgerBlue" Canvas.Left="371" Canvas.Top="285" Width="150" Height="60" Panel.ZIndex="0"></Rectangle>
-            <Rectangle Fill="DodgerBlue" Canvas.Left="720" Canvas.Top="285" Width="150" Height="60" Panel.ZIndex="0"></Rectangle>
-            <Ellipse Fill="Black" Canvas.Left="570" Canvas.Top="75" Width="10" Height="10" Panel.ZIndex="1"></Ellipse>
-            <Ellipse Fill="Black" Canvas.Left="650" Canvas.Top="75" Width="10" Height="10" Panel.ZIndex="1"></Ellipse>
-            <Rectangle Fill="Black" Canvas.Left="580" Canvas.Top="140" Width="75" Height="5" Panel.ZIndex="1"></Rectangle>
+            <Ellipse Fill="Aquamarine" Canvas.Left="518" Canvas.Top="10" Width="200" Height="200" Stroke="BurlyWood" StrokeThickness="5" Panel.ZIndex="1"></Ellipse>
+            <Rectangle Fill="Aqua" Canvas.Left="592" Canvas.Top="210" Width="50" Height="75" Panel.ZIndex="0"></Rectangle>
+            <Rectangle Fill="CadetBlue" Canvas.Left="520" Canvas.Top="285" Width="200" Height="250" Panel.ZIndex="1"></Rectangle>
+            <Rectangle Fill="Chocolate" Canvas.Left="520" Canvas.Top="535" Width="60" Height="150" Panel.ZIndex="1"></Rectangle>
+            <Rectangle Fill="Chocolate" Canvas.Left="660" Canvas.Top="535" Width="60" Height="150" Panel.ZIndex="1"></Rectangle>
+            <Rectangle Fill="Black" Canvas.Left="520" Canvas.Top="680" Width="60" Height="5" Panel.ZIndex="2"></Rectangle>
+            <Rectangle Fill="Black" Canvas.Left="660" Canvas.Top="680" Width="60" Height="5" Panel.ZIndex="2"></Rectangle>
+            <Rectangle Fill="DodgerBlue" Canvas.Left="370" Canvas.Top="285" Width="150" Height="60" Panel.ZIndex="1" Stroke="Coral" StrokeThickness="10"></Rectangle>
+            <Rectangle Fill="DodgerBlue" Canvas.Left="720" Canvas.Top="285" Width="150" Height="60" Panel.ZIndex="1" Stroke="Coral" StrokeThickness="3"></Rectangle>
+            <Ellipse Fill="Black" Canvas.Left="570" Canvas.Top="75" Width="10" Height="10" Panel.ZIndex="2"></Ellipse>
+            <Ellipse Fill="Black" Canvas.Left="650" Canvas.Top="75" Width="10" Height="10" Panel.ZIndex="2"></Ellipse>
+            <Rectangle Fill="Black" Canvas.Left="580" Canvas.Top="140" Width="75" Height="5" Panel.ZIndex="2"></Rectangle>
+
+            <Ellipse Fill="Fuchsia" Canvas.Left="630" Canvas.Top="585" Width="100" Height="100" Stroke="Black" StrokeThickness="2" Panel.ZIndex="0"></Ellipse>
         </Canvas>
     </Grid>
 </Window>
