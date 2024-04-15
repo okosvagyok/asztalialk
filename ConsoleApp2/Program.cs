@@ -1009,4 +1009,7 @@ Alakzatok
 Ellipse, Line, Path, Polygon, Polyline, Rectangle
 Közös tulajdonságok
 Stroke (szegély), StrokeThickness, Fill
+
+
+
 */

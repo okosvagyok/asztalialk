@@ -18,9 +18,16 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Canvas>
-            <Ellipse Fill="Aquamarine" Canvas.Left="10" Canvas.Top="40" Width="300" Height="300" Stroke="Beige" StrokeThickness="5" Panel.ZIndex="1"></Ellipse>
-            <Rectangle Fill="CadetBlue" Canvas.Left="170" Canvas.Top="60" Width="150" Height="200" Panel.ZIndex="0"></Rectangle>
-            <Path Fill="Chartreuse" Canvas.Left="255" Canvas.Top="180" Width="70" Height="90" Panel.ZIndex="0"></Path>
+            <Ellipse Fill="Aquamarine" Canvas.Left="520" Canvas.Top="10" Width="200" Height="200" Stroke="Beige" StrokeThickness="5" Panel.ZIndex="0"></Ellipse>
+            <Rectangle Fill="AliceBlue" Canvas.Left="590" Canvas.Top="210" Width="50" Height="75" Stroke="Coral" Panel.ZIndex="0"></Rectangle>
+            <Rectangle Fill="CadetBlue" Canvas.Left="520" Canvas.Top="285" Width="200" Height="250" Panel.ZIndex="0"></Rectangle>
+            <Rectangle Fill="Chocolate" Canvas.Left="520" Canvas.Top="535" Width="60" Height="150" Panel.ZIndex="0"></Rectangle>
+            <Rectangle Fill="Chocolate" Canvas.Left="660" Canvas.Top="535" Width="60" Height="150" Panel.ZIndex="0"></Rectangle>
+            <Rectangle Fill="DodgerBlue" Canvas.Left="371" Canvas.Top="285" Width="150" Height="60" Panel.ZIndex="0"></Rectangle>
+            <Rectangle Fill="DodgerBlue" Canvas.Left="720" Canvas.Top="285" Width="150" Height="60" Panel.ZIndex="0"></Rectangle>
+            <Ellipse Fill="Black" Canvas.Left="570" Canvas.Top="75" Width="10" Height="10" Panel.ZIndex="1"></Ellipse>
+            <Ellipse Fill="Black" Canvas.Left="650" Canvas.Top="75" Width="10" Height="10" Panel.ZIndex="1"></Ellipse>
+            <Rectangle Fill="Black" Canvas.Left="580" Canvas.Top="140" Width="75" Height="5" Panel.ZIndex="1"></Rectangle>
         </Canvas>
     </Grid>
 </Window>
