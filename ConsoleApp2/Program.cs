@@ -1011,5 +1011,80 @@ Közös tulajdonságok
 Stroke (szegély), StrokeThickness, Fill
 
 
+StackPanel vezérlő
+Vízszintesen/függőlegesen(alapértelmezett) egymás mellé teszi a vezérlőket, nincs sortörés
+itt is tudunk trükközni
 
+DockPanel vezérlő
+jó választás, ha az ablakot több területre szeretnénk osztani
+Left, Right, Bottom és Top tulajdonságokkal használjuk, az utolsó elem kitölti a fennmaradó helyet
+<DockPanel>
+    <Button DockPanel.Dock="Left">Left</Button>
+</DockPanel>
+
+Dialógusablakok
+MessageBox
+OpenFileDialog
+SaveFileDialog
+egyebek
+
+MessageBox
+átad egy üzenetet a felhasználónak és egy vagy több lehetőséget nyújt neki a válaszadásra
+a MessageBox.Show() metódus hívásával használható, melynek több paramétere is lehet
+pl. MessageBox.Show("Hello, World!", "My App");
+MessageBox.Show("Több választási lehetőségünk van. \n\nJó, mi?", "My App", MessageBoxButton.YesNoCancel);
+A következő értékeket használhatjuk: OK, OKCancel, YesNoCancel, YesNo
+az adott válasz feldolgozásához a MessageBoxResult értékét használhatjuk
+MessageBoxResult result = MessageBox.Show("Szereted a programozást?", "My App", MessageBoxButton.YesNoCancel);
+switch (result)
+{
+    case MessageBoxResult.Yes:
+        MessageBox.Show("Annak örülök!", "My App");
+        break;
+    case MessageBoxResult.No:
+        MessageBox.Show("Majd megszereted", "My App");
+        break;
+}
+Negyedik paraméterként megadható:
+MessageBox.Show("Hello, world!", "My App", MessageBoxButton.OK, MessageBoxImage.Information);
+Értékek:
+Asterisk, Information, Error, Hand, Stop, Exclamation, Warning, ...
+
+OpenFileDialog
+pl. ezt használjuk, ha egy fájl tartalmát beolvassuk egy TextBoxba:
+private void btnOpenFile_Click(object sender, RoutedEventArgs e)
+{
+    OpenFileDialog openFileDialog = new OpenFileDialog();
+    if (openFileDialog.ShowDialog() == true)
+    {
+        txtEditor.Text = File.ReadAllText(OpenFileDialog,FileName);
+    }
+}
+beállíthatunk szűrőt, pl. openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
+
+SaveFileDialog
+hasonlóan működik, mentéseknél használjuk
+
+The DispatcherTimer
+kódból kell megvalósítsuk a timert, mely a megadott időközönként ismételten ugyanazt a feladatot végrehajtja
+feliratkozunk a DispatcherTimer Tick eseményre, mely a beállított intervallumonként bekövetkezik
+először a Start() metódusát meg kell hívnunk, vagy at IsEnabled tulajdonságát igazra állítjuk
+using System.Windows.Threading;
+pl. csináljunk egy digitális órát
+<Grid>
+    <Label Name="lblTime" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" />
+</Grid>
+
+public MainWindow()
+    {
+        InitializeComponent();
+        DispatcherTimer timer = new DispatcherTimer();
+        timer.Interval = TimeSpan.FromSeconds(1);
+        timer.Tick += timer_Tick;
+        timer.Start();
+    }
+void timer_Tick(object sender, EventArgs e)
+{
+    lblTime.Content = DateTime.Now.ToLongTimeString();
+}
 */
