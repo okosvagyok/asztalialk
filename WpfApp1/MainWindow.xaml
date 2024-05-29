@@ -6,10 +6,22 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
-    <DockPanel>
-        <Button Name="btn" DockPanel.Dock="Left" Click="btn_Click">Ez egy gomb</Button>
-        <Button Name="btn1" DockPanel.Dock="Right" Click="btn1_Click">Ez is</Button>
-        <Button Name="btn2" DockPanel.Dock="Top" Click="btn2_Click">Szintén</Button>
-        <Button Name="btn3" DockPanel.Dock="Bottom" Click="btn3_Click">Gomb</Button>
-    </DockPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Játékos neve" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"></TextBlock>
+        <TextBox Name="jatekosnev" HorizontalAlignment="Center" VerticalAlignment="center" Grid.Column="1" Width="300" Height="35"></TextBox>
+        <TextBlock Text="Játékos tippjei" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Grid.Row="1"></TextBlock>
+        <TextBox Name="jatekostipp" Text="" HorizontalAlignment="Center" VerticalAlignment="center" Grid.Column="1" Grid.Row="1" Width="300" Height="35"></TextBox>
+        <TextBlock Name="tippekSzama" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" FontSize="30"></TextBlock>
+        <Button Name="hozzaad" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Width="300" Height="30" Click="hozzaad_Click">Játékos hozzáadása</Button>
+    </Grid>
 </Window>

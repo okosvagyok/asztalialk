@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using System.Text;
 using System.Windows;
@@ -24,51 +25,63 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            Beolvas();
         }
 
-        private void btn3_Click(object sender, RoutedEventArgs e)
+        List<Szamok> szamok = new List<Szamok> { };
+        public void Beolvas()
         {
-            MessageBoxResult result = MessageBox.Show("Gombra kattintottál?", "Gombok", MessageBoxButton.YesNo);
-            switch (result)
+            StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\EgyszámjátékGUI\EgyszámjátékGUI\egyszamjatek1.txt");
+            while (!f.EndOfStream)
             {
-                case MessageBoxResult.Yes:
-                    MessageBox.Show("Helyes válasz", "Gombok", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                    break;
-                case MessageBoxResult.No:
-                    MessageBox.Show("Nem sikerült", "Gombok", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    break;
+                string sor = f.ReadLine();
+                szamok.Add(new Szamok(sor.Split(" ")[0], int.Parse(sor.Split(" ")[1]), int.Parse(sor.Split(" ")[2]), int.Parse(sor.Split(" ")[3]), int.Parse(sor.Split(" ")[4])));
             }
         }
 
-        private void btn_Click(object sender, RoutedEventArgs e)
+        private void hozzaad_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Elindítottál egy időzítőt", "Gombok", MessageBoxButton.OK, MessageBoxImage.Information);
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(9);
-            timer.Tick += timer_Tick;
-            timer.Start();
-        }
-
-        void timer_Tick(object sender, EventArgs e)
-        {
-            MessageBox.Show("Eltelt 9 másodperc", "Gombok", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-        }
-
-        private void btn2_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Fájl beolvasása", "Gombok", MessageBoxButton.OK, MessageBoxImage.Information);
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Text files (*.txt)|*.txt";
-                if (openFileDialog.ShowDialog() == true)
+            if (jatekosnev.Text.Length > 0 || jatekostipp.Text.Length > 0)
+            {
+                MessageBox.Show("Egyik mező sem maradhat üresen!", "Hiba!");
+            }
+            for (int i = 0; i < szamok.Count(); i++)
+            {
+                if (jatekosnev.Text == szamok[i].nev)
                 {
-                    string reading = File.ReadAllText(@"C:\Users\kemenes.marton\Desktop\ezegy.txt", Encoding.UTF8);
-                    MessageBox.Show(reading, "Gombok", MessageBoxButton.OK, MessageBoxImage.Hand);
+                    MessageBox.Show("Van már ilyen nevű játékos!", "Hiba!");
                 }
+                if (jatekostipp.Text.Length != 7)
+                {
+                    MessageBox.Show("A tippek száma nem megfelelő!", "Hiba!");
+                }
+            }
+            StreamWriter w = new StreamWriter(@"egyszamjatek2.txt");
+            for (int i = 0; i < szamok.Count(); i++)
+            {
+                w.WriteLine(szamok[i].nev + " " + szamok[i].szam + " " + szamok[i].szam1 + " " + szamok[i].szam2 + " " + szamok[i].szam3);
+            }
+            szamok.Add(new Szamok(jatekosnev.Text, int.Parse(jatekostipp.Text.Split(" ")[0]), int.Parse(jatekostipp.Text.Split(" ")[1]), int.Parse(jatekostipp.Text.Split(" ")[2]), int.Parse(jatekostipp.Text.Split(" ")[3])));
+            MessageBox.Show("Az állomány bővítése sikeres volt!", "Üzenet");
+            jatekosnev.Text = "";
+            jatekostipp.Text = "";
         }
+    }
+    public class Szamok()
+    {
+        public string nev;
+        public int szam;
+        public int szam1;
+        public int szam2;
+        public int szam3;
 
-        private void btn1_Click(object sender, RoutedEventArgs e)
+        public Szamok(string nev, int szam, int szam1, int szam2, int szam3)
         {
-            btn1.Width = 200;
+            this.nev = nev;
+            this.szam = szam;
+            this.szam1 = szam1;
+            this.szam2 = szam2;
+            this.szam3 = szam3;
         }
     }
 };
