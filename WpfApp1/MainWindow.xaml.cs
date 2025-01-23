@@ -17,71 +17,45 @@ using System.Windows.Threading;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            Beolvas();
         }
-
-        List<Szamok> szamok = new List<Szamok> { };
-        public void Beolvas()
+        private void printText(object sender, SelectionChangedEventArgs args)
         {
-            StreamReader f = new StreamReader(@"C:\Users\kemenes.marton\Downloads\EgyszámjátékGUI\EgyszámjátékGUI\egyszamjatek1.txt");
-            while (!f.EndOfStream)
+            ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
+            if (lbi != null)
             {
-                string sor = f.ReadLine();
-                szamok.Add(new Szamok(sor.Split(" ")[0], int.Parse(sor.Split(" ")[1]), int.Parse(sor.Split(" ")[2]), int.Parse(sor.Split(" ")[3]), int.Parse(sor.Split(" ")[4])));
-            }
-        }
-
-        private void hozzaad_Click(object sender, RoutedEventArgs e)
-        {
-            if (jatekosnev.Text.Length > 0 || jatekostipp.Text.Length > 0)
-            {
-                MessageBox.Show("Egyik mező sem maradhat üresen!", "Hiba!");
-            }
-            for (int i = 0; i < szamok.Count(); i++)
-            {
-                if (jatekosnev.Text == szamok[i].nev)
+                if (lbi.Content.ToString() == "1")
                 {
-                    MessageBox.Show("Van már ilyen nevű játékos!", "Hiba!");
-                }
-                if (jatekostipp.Text.Length != 7)
-                {
-                    MessageBox.Show("A tippek száma nem megfelelő!", "Hiba!");
+                    tb.Text = "Egy, megérett a meggy.";
                 }
             }
-            StreamWriter w = new StreamWriter(@"egyszamjatek2.txt");
-            for (int i = 0; i < szamok.Count(); i++)
-            {
-                w.WriteLine(szamok[i].nev + " " + szamok[i].szam + " " + szamok[i].szam1 + " " + szamok[i].szam2 + " " + szamok[i].szam3);
-            }
-            szamok.Add(new Szamok(jatekosnev.Text, int.Parse(jatekostipp.Text.Split(" ")[0]), int.Parse(jatekostipp.Text.Split(" ")[1]), int.Parse(jatekostipp.Text.Split(" ")[2]), int.Parse(jatekostipp.Text.Split(" ")[3])));
-            MessageBox.Show("Az állomány bővítése sikeres volt!", "Üzenet");
-            jatekosnev.Text = "";
-            jatekostipp.Text = "";
         }
-    }
-    public class Szamok()
-    {
-        public string nev;
-        public int szam;
-        public int szam1;
-        public int szam2;
-        public int szam3;
-
-        public Szamok(string nev, int szam, int szam1, int szam2, int szam3)
+        private void btn_Click(object sender, RoutedEventArgs e)
         {
-            this.nev = nev;
-            this.szam = szam;
-            this.szam1 = szam1;
-            this.szam2 = szam2;
-            this.szam3 = szam3;
+            lb.Items.Clear();
+            tbx.Text = "Lista kiürítve!";
+            tb.Text = "";
+            btn.Visibility = Visibility.Collapsed;
+        }
+        private void rebtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (lb.Items.Count == 0)
+            {
+                lb.Items.Insert(0, "1");
+                lb.Items.Insert(1, "2");
+                lb.Items.Insert(2, "3");
+                lb.Items.Insert(3, "4");
+                lb.Items.Insert(4, "5");
+                lb.FontSize = 30;
+                lb.HorizontalAlignment = HorizontalAlignment.Center;
+            }
+            tb.Text = "";
+            tbx.Text = "Válassz egy számot";
+            btn.Visibility = Visibility.Visible;
         }
     }
 };

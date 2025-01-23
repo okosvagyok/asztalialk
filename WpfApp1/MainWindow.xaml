@@ -17,11 +17,16 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="Játékos neve" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"></TextBlock>
-        <TextBox Name="jatekosnev" HorizontalAlignment="Center" VerticalAlignment="center" Grid.Column="1" Width="300" Height="35"></TextBox>
-        <TextBlock Text="Játékos tippjei" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Grid.Row="1"></TextBlock>
-        <TextBox Name="jatekostipp" Text="" HorizontalAlignment="Center" VerticalAlignment="center" Grid.Column="1" Grid.Row="1" Width="300" Height="35"></TextBox>
-        <TextBlock Name="tippekSzama" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" FontSize="30"></TextBlock>
-        <Button Name="hozzaad" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Width="300" Height="30" Click="hozzaad_Click">Játékos hozzáadása</Button>
+        <TextBlock Name="tbx" Text="Válassz egy számot" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Grid.Column="1"></TextBlock>
+        <ListBox Grid.Row="1" Grid.Column="1" SelectionChanged="printText" Name="lb" BorderThickness="0">
+            <ListBoxItem FontSize="30" HorizontalAlignment="Center">1</ListBoxItem>
+            <ListBoxItem FontSize="30" HorizontalAlignment="Center">2</ListBoxItem>
+            <ListBoxItem FontSize="30" HorizontalAlignment="Center">3</ListBoxItem>
+            <ListBoxItem FontSize="30" HorizontalAlignment="Center">4</ListBoxItem>
+            <ListBoxItem FontSize="30" HorizontalAlignment="Center">5</ListBoxItem>
+        </ListBox>
+        <TextBox Grid.Row="2" Name="tb" Text="" FontSize="30" HorizontalAlignment="Center" BorderThickness="0"></TextBox>
+        <Button Name="btn" Width="100" Height="50" Grid.Row="2" Grid.Column="1" Click="btn_Click">Kiürít</Button>
+        <Button Name="rebtn" Width="100" Height="50" Grid.Row="2" Grid.Column="2" Click="rebtn_Click">Újra</Button>
     </Grid>
 </Window>
