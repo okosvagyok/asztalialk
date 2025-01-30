@@ -32,6 +32,7 @@ namespace WpfApp1
             {
                 items++;
                 todoList.Items.Add(items + ". " + newItem);
+                countTodos();
                 userInput.Text = "";
                 MessageBox.Show("Tennivaló hozzáadva!");
             }
@@ -54,6 +55,7 @@ namespace WpfApp1
             {
                 todoList.Items.RemoveAt(todoList.SelectedIndex);
                 UpdateItemIndixes();
+                countTodos();
             }
             else
             {
@@ -79,6 +81,7 @@ namespace WpfApp1
             if (todoList.Items.Count != 0)
             {
                 todoList.Items.Clear();
+                countTodos();
                 items = 0;
                 MessageBox.Show("Minden tennivaló törölve!");
             }
@@ -86,6 +89,10 @@ namespace WpfApp1
             {
                 MessageBox.Show("Nincs mit törölni!");
             }
+        }
+        private void countTodos()
+        {
+            todoCount.Text = todoList.Items.Count.ToString();
         }
     }
 };
