@@ -6,27 +6,28 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
-    <Grid>
+    <Window.Resources>
+        <SolidColorBrush x:Key="DynamicBackgroundBrush" Color="Pink"/>
+    </Window.Resources>
+    <Grid Background="{DynamicResource DynamicBackgroundBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Name="tbx" Text="Válassz egy számot" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Grid.Column="1"></TextBlock>
-        <ListBox Grid.Row="1" Grid.Column="1" SelectionChanged="printText" Name="lb" BorderThickness="0">
-            <ListBoxItem FontSize="30" HorizontalAlignment="Center">1</ListBoxItem>
-            <ListBoxItem FontSize="30" HorizontalAlignment="Center">2</ListBoxItem>
-            <ListBoxItem FontSize="30" HorizontalAlignment="Center">3</ListBoxItem>
-            <ListBoxItem FontSize="30" HorizontalAlignment="Center">4</ListBoxItem>
-            <ListBoxItem FontSize="30" HorizontalAlignment="Center">5</ListBoxItem>
-        </ListBox>
-        <TextBox Grid.Row="2" Name="tb" Text="" FontSize="30" HorizontalAlignment="Center" BorderThickness="0"></TextBox>
-        <Button Name="btn" Width="100" Height="50" Grid.Row="2" Grid.Column="1" Click="btn_Click">Kiürít</Button>
-        <Button Name="rebtn" Width="100" Height="50" Grid.Row="2" Grid.Column="2" Click="rebtn_Click">Újra</Button>
+        <TextBlock Name="title" Text="Tennivaló lista" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="Comic Sans MS" FontWeight="Bold" Grid.Column="1"></TextBlock>
+        <TextBox Name="userInput" Text="Adj meg egy tennivalót!" Grid.Row="1" Grid.Column="1" Width="350" Height="40" FontSize="20" VerticalAlignment="Top" GotFocus="userInput_GotFocus"></TextBox>
+        <Button Name="addBtn" Width="100" Height="50" Grid.Row="1" Grid.Column="1" FontSize="15" FontFamily="Comic Sans MS" Click="addBtn_Click">Hozzáadás</Button>
+        <ListBox Grid.Row="2" Grid.Column="1" Name="todoList" BorderThickness="0" FontSize="30" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Top"></ListBox>
+        <TextBlock Name="delete" Text="Törléshez kattints az elemre, majd a 'Törlés gombra!'" TextWrapping="Wrap" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS"></TextBlock>
+        <Button Name="deleteBtn" Width="100" Height="50" Grid.Row="1" Grid.Column="2" FontSize="15" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="deleteBtn_Click">Törlés</Button>
+        <TextBlock Name="deleteAll" Text="Minden elem törléséhez kattints az 'Összes törlése' gombra!'" TextWrapping="Wrap" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS"></TextBlock>
+        <Button Name="deleteAllBtn" Width="100" Height="50" Grid.Row="2" Grid.Column="2" FontSize="15" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Center" Click="deleteAllBtn_Click">Összes törlése</Button>
+        
     </Grid>
 </Window>
