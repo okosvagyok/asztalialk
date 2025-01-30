@@ -28,9 +28,13 @@ namespace WpfApp1
             ListBoxItem lbi = ((sender as ListBox).SelectedItem as ListBoxItem);
             if (lbi != null)
             {
-                if (lbi.Content.ToString() == "1")
+                string[] texts = { "Egy - megérett a meggy.", "Kettő - csipkebokor vessző.", "Három - te leszel a párom.", "Négy - bíz oda nem mégy.", "Öt - leszállott a köd." };
+                for (int i = 0; i < texts.Length; i++)
                 {
-                    tb.Text = "Egy, megérett a meggy.";
+                    if (lbi.Content.ToString() == (i + 1).ToString())
+                    {
+                        tb.Text = texts[i];
+                    }
                 }
             }
         }
