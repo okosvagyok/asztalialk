@@ -33,7 +33,7 @@ namespace WpfApp1
                 items++;
                 todoList.Items.Add(items + ". " + newItem);
                 countTodos();
-                userInput.Text = "Adj meg egy tennivalót!";
+                userInput.Text = "Mit kell csinálnod?";
                 MessageBox.Show("Tennivaló hozzáadva!");
             }
             else
@@ -43,7 +43,7 @@ namespace WpfApp1
         }
         private void userInput_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (userInput.Text == "Adj meg egy tennivalót!")
+            if (userInput.Text == "Mit kell csinálnod?")
             {
                 userInput.Text = "";
             }
