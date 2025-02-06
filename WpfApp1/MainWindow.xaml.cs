@@ -33,7 +33,7 @@ namespace WpfApp1
                 items++;
                 todoList.Items.Add(items + ". " + newItem);
                 countTodos();
-                userInput.Text = "";
+                userInput.Text = "Adj meg egy tennivalót!";
                 MessageBox.Show("Tennivaló hozzáadva!");
             }
             else
