@@ -22,6 +22,7 @@
         </Grid.RowDefinitions>
         <TextBlock Name="title" Text="Tennivaló lista" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontFamily="Comic Sans MS" FontWeight="Bold" Grid.Column="1"></TextBlock>
         <TextBox Name="userInput" Text="Adj meg egy tennivalót!" Grid.Row="1" Grid.Column="1" Width="350" Height="40" FontSize="20" VerticalAlignment="Top" GotFocus="userInput_GotFocus"></TextBox>
+        <CheckBox Name="complete" Content="Kész?" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" FontSize="20" FontFamily="Comic Sans MS"></CheckBox>
         <Button Name="addBtn" Width="100" Height="50" Grid.Row="1" Grid.Column="1" FontSize="15" FontFamily="Comic Sans MS" Click="addBtn_Click">Hozzáadás</Button>
         <ListBox Grid.Row="2" Grid.Column="1" Name="todoList" BorderThickness="0" FontSize="30" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Top" Background="LightBlue"></ListBox>
         <TextBlock Name="delete" Text="Törléshez kattints az elemre, majd a 'Törlés gombra!'" TextWrapping="Wrap" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS"></TextBlock>
