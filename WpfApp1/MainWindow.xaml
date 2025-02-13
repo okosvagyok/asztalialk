@@ -31,6 +31,6 @@
         <TextBlock Name="editText" Text="Tennivaló szerkesztéséhez kattints a 'Szerkesztés' gombra!" TextWrapping="Wrap" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS"></TextBlock>
         <Button Name="editToDo" Width="110" Height="50" Grid.Row="2" Grid.Column="2" FontSize="15" FontFamily="Comic Sans MS" Margin="0 130 0 0" Click="editToDo_Click">Szerkesztés</Button>
         <TextBlock Name="info" Text="A tennivalók száma:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS"></TextBlock>
-        <TextBox Name="todoCount" Text="" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS" BorderThickness="0" Background="Beige" Margin="0, 0, 0, 100"></TextBox>
+        <TextBox Name="todoCount" Text="0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS" BorderThickness="0" Background="Beige" Margin="0, 0, 0, 100"></TextBox>
     </Grid>
 </Window>
