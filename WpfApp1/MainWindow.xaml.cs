@@ -94,5 +94,17 @@ namespace WpfApp1
         {
             todoCount.Text = todoList.Items.Count.ToString();
         }
+
+        private void editToDo_Click(object sender, RoutedEventArgs e)
+        {
+            if(todoList.SelectedIndex != -1)
+            {
+                MessageBox.Show("Elem szerkesztése: " + todoList.SelectedItem.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Nincs kijelölt elem!");
+            }
+        }
     }
 };
