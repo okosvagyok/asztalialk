@@ -24,5 +24,6 @@ namespace todo_page.View
         {
             InitializeComponent();
         }
+        
     }
 }

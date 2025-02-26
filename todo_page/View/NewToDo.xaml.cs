@@ -24,28 +24,19 @@ namespace todo_page.View
         {
             InitializeComponent();
         }
-        public int items = 0;
-        private void userinput_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (userinput.Text == "Mit kell csinálnod?")
-            {
-                userinput.Text = "";
-            }
-        }
+        public List<string> todos = new List<string>();
         private void addnew_Click(object sender, RoutedEventArgs e)
         {
-            string newItem = userinput.Text;
-            if (newItem != "" || newItem != "Mit kell csinálnod?")
+            if (userinput.Text != "")
             {
-                items++;
-                //todos.Items.Add(items + ". " + newItem);
-                userinput.Text = "Mit kell csinálnod?";
-                MessageBox.Show("Tennivaló hozzáadva!");
+                string newtodo = userinput.Text;
+                todos.Add(newtodo);
+                userinput.Text = "";
             }
             else
             {
-                MessageBox.Show("Írj be egy tennivalót!");
+                MessageBox.Show("Nem hagyhatod üresen!");
             }
         }
     }
-}
+};
