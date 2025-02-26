@@ -9,8 +9,8 @@
       Title="NewToDo">
 
     <Grid>
-        <Label Name="label" Content="Adj hozzá tennivalót!" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="35" FontFamily="Comic Sans MS"></Label>
-        <TextBox Name="userinput" Text="" HorizontalAlignment="Center" Width="200" Height="30" Margin="0 0 0 250" FontSize="15" FontFamily="Comic Sans MS"></TextBox>
+        <Label Content="Adj hozzá tennivalót!" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="40" FontFamily="Comic Sans MS" FontWeight="Bold"></Label>
+        <TextBox Name="userinput" Text="Mit kell csinálnod?" HorizontalAlignment="Center" Width="200" Height="30" Margin="0 0 0 250" FontSize="15" FontFamily="Comic Sans MS" GotFocus="userinput_GotFocus"></TextBox>
         <Button Name="addnew" Content="Hozzáadás" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontFamily="Comic Sans MS" FontWeight="Bold" Click="addnew_Click"></Button>
     </Grid>
 </Page>
