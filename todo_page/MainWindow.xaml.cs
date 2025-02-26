@@ -34,4 +34,15 @@ public partial class MainWindow : Window
         var addNewToDo = new NewToDo();
         MainFrame.Content = addNewToDo;
     }
+
+    private void EditPage_Click(object sender, RoutedEventArgs e)
+    {
+        var editToDo = new EditPage();
+        MainFrame.Content = editToDo;
+    }
+    private void DeletePage_Click(object sender, RoutedEventArgs e)
+    {
+        var deleteToDo = new DeletePage();
+        MainFrame.Content = deleteToDo;
+    }
 }

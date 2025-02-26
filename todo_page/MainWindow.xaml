@@ -12,9 +12,9 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Content="Új tennivaló hozzáadása" Width="140" Height="40" HorizontalAlignment="Left" Margin="50" Click="NewToDo_Click"></Button>
-        <Button Grid.Column="0" Content="Tennivaló szerkesztése" Width="140" Height="40" Margin="150 10 10 10"></Button>
-        <Button Grid.Column="0" Content="Tennivaló törlése" Width="140" Height="40" Margin="10 100 10 10"></Button>
+        <Button Name="new" Grid.Column="0" Content="Új tennivaló hozzáadása" Width="140" Height="40" HorizontalAlignment="Left" Click="NewToDo_Click"></Button>
+        <Button Name="edit" Grid.Column="0" Content="Tennivaló szerkesztése" Width="140" Height="40" HorizontalAlignment="Right" Click="EditPage_Click"></Button>
+        <Button Name="delete" Grid.Column="0" Content="Tennivaló törlése" Width="140" Height="40" VerticalAlignment="Bottom" Click="DeletePage_Click"></Button>
         <Frame x:Name="MainFrame" Grid.Column="1" Grid.Row="1"></Frame>
     </Grid>
 </Window>

@@ -16,25 +16,13 @@ using System.Windows.Shapes;
 namespace todo_page.View
 {
     /// <summary>
-    /// Interaction logic for NewToDo.xaml
+    /// Interaction logic for EditPage.xaml
     /// </summary>
-    public partial class NewToDo : Page
+    public partial class EditPage : Page
     {
-        public NewToDo()
+        public EditPage()
         {
             InitializeComponent();
-        }
-        private void addnew_Click(object sender, RoutedEventArgs e)
-        {
-            if (userinput.Text != "")
-            {
-
-                MessageBox.Show("Tennivaló hozzáadva");
-            }
-            else
-            {
-                MessageBox.Show("Írd be, mit kell csinálnod!");
-            }
         }
     }
 }
