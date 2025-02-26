@@ -30,6 +30,7 @@ namespace todo_page.View
             {
 
                 MessageBox.Show("Tennivaló hozzáadva");
+                userinput.Text = "";
             }
             else
             {
