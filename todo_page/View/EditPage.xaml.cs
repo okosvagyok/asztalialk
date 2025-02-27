@@ -23,14 +23,21 @@ namespace todo_page.View
         public EditPage()
         {
             InitializeComponent();
-            loadItems();
+            loadItemsEdit();
         }
-        private void loadItems()
+        private void loadItemsEdit()
         {
             MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            foreach (var item in mainWindow.todoList)
+            int listCount = mainWindow.todoList.Count;
+            if (todos.Items.Count < listCount)
             {
-                //todolist.Items.Add(item);
+                for (int i = 0; i < listCount; i++)
+                {
+                    ListBoxItem item = new ListBoxItem();
+                    item.Content = mainWindow.todoList[i];
+                    mainWindow.todoList.Add(item.ToString());
+                    todos.Items.Add(item.Content);
+                }
             }
         }
     }

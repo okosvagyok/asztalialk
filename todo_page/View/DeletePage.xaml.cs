@@ -23,6 +23,22 @@ namespace todo_page.View
         public DeletePage()
         {
             InitializeComponent();
+            loadItemsDelete();
+        }
+        private void loadItemsDelete()
+        {
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            int listCount = mainWindow.todoList.Count;
+            if (todos.Items.Count < listCount)
+            {
+                for (int i = 0; i < listCount; i++)
+                {
+                    ListBoxItem item = new ListBoxItem();
+                    item.Content = mainWindow.todoList[i];
+                    mainWindow.todoList.Add(item.ToString());
+                    todos.Items.Add(item.Content);
+                }
+            }
         }
     }
 }
