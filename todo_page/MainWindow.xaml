@@ -6,15 +6,16 @@
         xmlns:local="clr-namespace:todo_page"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="720" Width="1280">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Content="Új tennivaló hozzáadása" Width="140" Height="40" HorizontalAlignment="Left" Margin="50" Click="NewToDo_Click"></Button>
-        <Button Grid.Column="0" Content="Tennivaló szerkesztése" Width="140" Height="40" Margin="150 10 10 10"></Button>
-        <Button Grid.Column="0" Content="Tennivaló törlése" Width="140" Height="40" Margin="10 100 10 10"></Button>
+        <Label Grid.Column="0" Name="credit" Content="Kemenes Márton" FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Top"></Label>
+        <Button Grid.Column="0" Name="newTodo" Content="Új tennivaló hozzáadása" Width="140" Height="40" HorizontalAlignment="Left" Click="NewToDo_Click"></Button>
+        <Button Grid.Column="0" Name="editTodo" Content="Tennivaló szerkesztése" Width="140" Height="40" HorizontalAlignment="Right" Click="editTodo_Click"></Button>
+        <Button Grid.Column="0" Name="deleteTodo" Content="Tennivaló törlése" Width="140" Height="40" VerticalAlignment="Bottom" Click="deleteTodo_Click"></Button>
         <Frame x:Name="MainFrame" Grid.Column="1" Grid.Row="1"></Frame>
     </Grid>
 </Window>

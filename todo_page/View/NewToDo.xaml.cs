@@ -24,14 +24,15 @@ namespace todo_page.View
         {
             InitializeComponent();
         }
-        public List<string> todos = new List<string>();
         private void addnew_Click(object sender, RoutedEventArgs e)
         {
             if (userinput.Text != "")
             {
-                string newtodo = userinput.Text;
-                todos.Add(newtodo);
+                string newtodo = userinput.Text.ToString();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.todoList.Add(newtodo);
                 userinput.Text = "";
+                MessageBox.Show("Sikeresen hozzáadtad a teendődet!");
             }
             else
             {

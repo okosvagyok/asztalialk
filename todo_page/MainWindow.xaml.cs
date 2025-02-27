@@ -21,8 +21,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
-
-    public int items = 0;
+    public List<string> todoList = new List<string>();
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
         var MainPage = new MainPage();
@@ -33,5 +32,17 @@ public partial class MainWindow : Window
     {
         var addNewToDo = new NewToDo();
         MainFrame.Content = addNewToDo;
+    }
+
+    private void editTodo_Click(object sender, RoutedEventArgs e)
+    {
+        var editToDo = new EditPage();
+        MainFrame.Content = editToDo;
+    }
+    
+    private void deleteTodo_Click(object sender, RoutedEventArgs e)
+    {
+        var deleteToDo = new DeletePage();
+        MainFrame.Content = deleteToDo;
     }
 }
